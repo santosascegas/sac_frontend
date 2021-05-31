@@ -1,0 +1,44 @@
+.accessibilityMenu {
+    background-color: #2A2E2E;
+    height: 6vh;
+}
+
+.accessibilityMenu .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accessibilityMenu .controlsRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.accessibilityMenu .controlsRow .fontSizeButton {
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 28px;
+}
+
+.accessibilityMenu .controlsRow .contrastOptions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accessibilityMenu .controlsRow .contrastOptions p {
+    color: #fff;
+    font-size: 21px;
+    margin-bottom: 0;
+}
+
+.accessibilityMenu .controlsRow .contrastOptions .colorOption {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 0.7rem;
+}
