@@ -20,7 +20,7 @@ const Layout = (props) => {
       <div>
         <Header />
         {props.children}
-        <Footer />
+        <Footer inicio={props.inicio} />
       </div>
 </div>
   )

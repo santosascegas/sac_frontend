@@ -11,6 +11,7 @@ import {
 } from 'reactstrap';
 
 import AccessibilityMenu from './AccessibilityMenu';
+import Link from 'next/link'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,32 +39,56 @@ const Header = () => {
           <NavbarBrand href="/">
             <img
               alt=""
-        src="./images/logo-principal.png"
-        width="120"
-        height="100"
-        className="d-inline-block align-top"
-      />
+              src="./images/logo-principal.png"
+              width="120"
+              height="100"
+              className="d-inline-block align-top"
+            />
           </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href="/">Início</NavLink>
+                <Link href="/">
+                  <a className="nav-link">
+                    Início
+                  </a>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="#feature">Quem Somos</NavLink>
+                <Link href="/">
+                  <a className="nav-link">
+                    Quem Somos
+                  </a>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="#service">Agendamento</NavLink>
+                <Link href="/agendamento">
+                  <a className="nav-link">
+                    Agendamento
+                  </a>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="#about">Trajeto</NavLink>
+                <Link href="/">
+                  <a className="nav-link">
+                    Trajeto
+                  </a>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="#about">Dúvidas Frequentes</NavLink>
+                <Link href="/faq">
+                  <a className="nav-link">
+                    Dúvidas Frequentes
+                  </a>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="#about">Fale Conosco</NavLink>
+                <Link href="/agendamento">
+                  <a className="nav-link">
+                    Fale Conosco
+                  </a>
+                </Link>
               </NavItem>
             </Nav>
           </Collapse>

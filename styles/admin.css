@@ -1,0 +1,23 @@
+.admin .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.admin .container form {
+    width: 30%;
+}
+
+.admin .container form .form-control {
+    border-radius: 5px;
+    border-color: #000;
+    margin-bottom: 1.2rem;
+}
+
+.admin .container #enviarAdmin {
+    background-color: #000;
+    width: 30%;
+}

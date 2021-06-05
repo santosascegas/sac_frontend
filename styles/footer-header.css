@@ -1,0 +1,14 @@
+.footerHeader {
+    background-color: #2A2E2E;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerHeader .voltar {
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 18px;
+}

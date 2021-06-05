@@ -1,9 +1,10 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import Link from 'next/link'
 
 const Hero = () => {
   return (
-    <section className="section position-relative">
+    <section className="section position-relative" id="bannerInicio">
       <Container>
         <Row className="align-items-center">
           <Col lg={5} className="bannerAgendamentoImagem">
@@ -25,9 +26,9 @@ const Hero = () => {
                 <h4 className="mt-2">Demais dias e horários, favor entrar em contato pelo Fale Conosco.</h4>
               </div>
 
-              <a href="#" className="agendamentoButton">
-                Agende seu trajeto
-              </a>
+              <Link href="/agendamento">
+                <a className="agendamentoButton">Agende seu trajeto</a>
+              </Link>
             </Container>
           </Col>
         </Row>

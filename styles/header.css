@@ -6,7 +6,7 @@
     font-weight: 700;
     font-size: 21px;
   }
-  .header .nav-item .nav-link {
+  .header .nav-item a {
     color: var(--color-text-secondary);
   }
   .header .navbar {

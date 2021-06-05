@@ -5,25 +5,25 @@ const Sobre = () => {
   const janelas = [
     {
       id: 1,
-      img: "./images/45.png",
+      img: "./images/Muretas3.jpg",
       title: "Dúvidas Frequentes",
       desc: "Página dedicada para informar e retirar dúvidas sobre o projeto Santos às Cegas."
     },
     {
       id: 2,
-      img: "./images/45.png",
+      img: "./images/TomieOhtake.jpg",
       title: "Trajeto",
       desc: ""
     },
     {
       id: 3,
-      img: "./images/45.png",
+      img: "./images/Unlimited.jpg",
       title: "Dúvidas Frequentes",
       desc: ""
     },
     {
       id: 4,
-      img: "./images/45.png",
+      img: "./images/Atlantico.jpg",
       title: "Fale Conosco",
       desc: ""
     },
@@ -31,9 +31,11 @@ const Sobre = () => {
 
   const RenderJanelas = () => janelas.map((janela, key) => (
 
-    <Col lg={3}>
+    <Col key={key} lg={3}>
       <Card style={{ width: '18rem', height: '70vh', border: '2px solid #cc4137' }}>
-        <div style={{ padding: '20px' }}><CardImg variant="top" src={janela.img} /></div>
+        <div style={{ padding: '20px' }}>
+          <CardImg style={{ height: '30vh', objectFit: 'cover' }} variant="top" src={janela.img} />
+        </div>
         <CardBody style={{ padding: '20px' }}>
           <CardTitle style={{ textAlign: 'center', fontWeight: 700, fontSize: '21px' }}>{janela.title}</CardTitle>
           <CardText style={{ fontSize: '16px' }}>
