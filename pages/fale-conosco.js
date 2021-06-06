@@ -42,7 +42,7 @@ const Index = () => {
     }
 
     setError(null);
-    console.log(params);
+    // console.log(params);
   }
 
   const limpar = () => {
