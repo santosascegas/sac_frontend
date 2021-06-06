@@ -10,6 +10,8 @@ import '../styles/admin.css';
 import '../styles/dashboard.css';
 import '../styles/faq.css';
 import '../styles/trajeto.css';
+import '../styles/quem-somos.css';
+import '../styles/fale-conosco.css';
 
 import '../styles/Clock.css';
 import '../styles/TimePicker.css';

@@ -56,7 +56,7 @@ const Header = () => {
                 </Link>
               </NavItem>
               <NavItem>
-                <Link href="/">
+                <Link href="/quem-somos">
                   <a className="nav-link">
                     Quem Somos
                   </a>
@@ -84,7 +84,7 @@ const Header = () => {
                 </Link>
               </NavItem>
               <NavItem>
-                <Link href="/agendamento">
+                <Link href="/fale-conosco">
                   <a className="nav-link">
                     Fale Conosco
                   </a>
