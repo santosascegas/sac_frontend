@@ -1,5 +1,6 @@
 .agendamento {
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .agendamento .dateRow {
@@ -33,4 +34,9 @@
 
 .agendamento .userForm .form-group {
     margin-top: 1.2rem;
+}
+
+.agendamento .actionButton {
+    background-color: #000;
+    width: 20%;
 }

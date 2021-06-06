@@ -19,9 +19,9 @@ const UserTable = ({ agendamentos }) => {
       {
         agendamentos.map((a, key) => (
           <tr key={key}>
-            <th scope="row">{a.data}</th>
-            <td>{a.nome}</td>
-            <td>{a.email}</td>
+            <th scope="row">{a.dt}</th>
+            <td>{a.nomeUsuario}</td>
+            <td>{a.emailUsuario}</td>
             <td>{a.documento}</td>
             <td>{a.telefone}</td>
             <td>{a.atestado}</td>

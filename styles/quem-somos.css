@@ -1,0 +1,30 @@
+.quemSomos {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.quemSomos .intro {
+    margin-top: 1.5rem;
+}
+
+.quemSomos .row {
+    margin-top: 3rem;
+}
+
+.quemSomos .logos {
+    align-items: center;
+    justify-content: center;
+}
+
+.quemSomos .alunos {
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.quemSomos .alunos p {
+    width: 60%;
+}
