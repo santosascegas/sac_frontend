@@ -1,9 +1,6 @@
 import React from 'react';
 
 import Layout from "../components/Common/Layout";
-import DatePicker from "../components/Agendamento/DatePicker";
-import UserForm from "../components/Agendamento/UserForm";
-import Consentimento from "../components/Agendamento/Consentimento";
 
 import { 
   Container, 
@@ -11,9 +8,9 @@ import {
   Col 
 } from "reactstrap";
 
+import { duvidasFrequentes } from '../helpers/DuvidasFrequentes'; 
+
 const Index = () => {
-  const [data, setData] = React.useState(null);
-  const [userInfo, setUserInfo] = React.useState(null)
 
   return (
     <Layout pageTitle="Santos as Cegas | Dúvidas Frequentes" inicio="faq">
@@ -21,6 +18,16 @@ const Index = () => {
         <Container>
           <h2>Dúvidas Frequentes</h2>
 
+          <Row className="duvidasRow">
+            { duvidasFrequentes.map((df, idx) => (
+              <Col lg={6} id={idx % 2 != 0 ? 'impar' : 'par'}>
+                <div className="duvidasCard">
+                  <strong>{df.titulo}</strong>
+                  <p>{df.corpo}</p>
+                </div>
+              </Col>
+            ))}
+          </Row>
          
         </Container>
       </section>

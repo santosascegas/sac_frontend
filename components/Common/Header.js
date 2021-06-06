@@ -70,7 +70,7 @@ const Header = () => {
                 </Link>
               </NavItem>
               <NavItem>
-                <Link href="/">
+                <Link href="/trajeto">
                   <a className="nav-link">
                     Trajeto
                   </a>

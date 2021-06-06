@@ -8,6 +8,8 @@ import '../styles/footer.css';
 import '../styles/agendamento.css';
 import '../styles/admin.css';
 import '../styles/dashboard.css';
+import '../styles/faq.css';
+import '../styles/trajeto.css';
 
 import '../styles/Clock.css';
 import '../styles/TimePicker.css';
