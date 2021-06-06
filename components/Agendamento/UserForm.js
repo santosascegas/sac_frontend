@@ -34,7 +34,7 @@ const UserForm = ({ setUserInfo }) => {
           </FormGroup>
         </Form>
 
-        <Button onClick={handleSubmit}>
+        <Button onClick={handleSubmit} className="actionButton">
           Próximo
         </Button>
       </>

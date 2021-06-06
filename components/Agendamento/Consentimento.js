@@ -101,7 +101,7 @@ const Consentimento = () => {
         { perguntasOpcionais.map((po, index) => renderPergunta(po, index+1)) }
         { perguntasObrigatorias.map((po, index) => renderPerguntaObrigatoria(po, perguntasOpcionais.length+index+1)) }
 
-        <Button onClick={handleSubmit}>
+        <Button onClick={handleSubmit} className="actionButton" style={{ marginTop: '2rem' }}>
           Enviar
         </Button>
       </>
