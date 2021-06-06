@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button, FormGroup, Label } from "reactstrap";
 
 import { FaTrash } from 'react-icons/fa';
 
@@ -10,7 +10,7 @@ const DatasCadastro = ({ datas }) => {
   const [dataCalendario, setDataCalendario] = React.useState('')
   const [dataHorario, setDataHorario] = React.useState('')
 
-  const [datasDisponiveis, setDatasDisponiveis] = React.useState([...datas]);
+  const [datasDisponiveis, setDatasDisponiveis] = React.useState(datas);
 
   
   const handleSubmit = () => {
@@ -26,8 +26,8 @@ const DatasCadastro = ({ datas }) => {
     <Container style={{ marginBottom: 15 }}>
       <Row>
         <Col lg={4}>
-          { datasDisponiveis.map((dt) => (
-            <Row>
+          { datasDisponiveis.map((dt, idx) => (
+            <Row key={idx}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <p>{dt}</p>
                 <Button className="deleteData">
@@ -41,13 +41,15 @@ const DatasCadastro = ({ datas }) => {
         <Col lg={8}>
           <Row>
             <Col lg={7}>
-              <DatePicker 
-                value={dataCalendario}
-                onChange={(val) => {
-                  const splitted = val.split('T');
-                  setDataCalendario(splitted[0])
-                }}
-              />
+              <FormGroup>
+                <DatePicker 
+                  value={dataCalendario}
+                  onChange={(val) => {
+                    const splitted = val.split('T');
+                    setDataCalendario(splitted[0])
+                  }}
+                />
+              </FormGroup>
             </Col>
             <Col lg={5}>
               <TimePicker 

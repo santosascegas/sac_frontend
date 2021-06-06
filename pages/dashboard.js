@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import Layout from "../components/Common/Layout";
 import UserTable from "../components/Dashboard/UserTable";
@@ -12,26 +13,7 @@ import {
   Collapse
 } from "reactstrap";
 
-const Index = () => {
-  const agendamentos = [
-    {
-      data: '09/06/2021',
-      nome: 'Marcel Losso Forte',
-      email: 'marcel.losso@gmail.com',
-      documento: '353.884.318-00',
-      telefone: '13997823042',
-      atestado: 'Sim'
-    },
-    {
-      data: '10/06/2021',
-      nome: 'Thamyres Sobral Siqueira',
-      email: 'thamyres.siqueira@gmail.com',
-      documento: '464.179.398-04',
-      telefone: '13997823042',
-      atestado: 'Não'
-    },
-  ]
-
+const Dashboard = ({ agendamentos, error }) => {
   const datasCadastradas = [
     "11/06/2021 09:30",
     "12/06/2021 11:40",
@@ -39,7 +21,7 @@ const Index = () => {
 
   const [openAgendamento, setOpenAgendamento] = React.useState(false);
   const [openDatas, setOpenDatas] = React.useState(false);
-  
+
   return (
     <Layout pageTitle="Santos as Cegas | Dashboard" inicio="dashboard">
       <section className="dashboard" id="dashboard">
@@ -69,13 +51,32 @@ const Index = () => {
           </Button>
           
           <Collapse isOpen={openAgendamento}>
-            <UserTable 
-              agendamentos={agendamentos}
-            />
+            { error ? 
+            (
+              <div>Ocorreu um erro ao requisitar os agendamentos: {error.message}</div>
+            ) :
+              (
+                <UserTable 
+                  agendamentos={agendamentos}
+                />
+              )
+            }
+            
           </Collapse>
         </Container>
       </section>
     </Layout>
   )
 }
-export default Index;
+
+Dashboard.getInitialProps = async ctx => {
+  try {
+    const res = await axios.get('http://0.0.0.0:8080/agendamento/');
+    const agendamentos = res.data;
+    return { agendamentos };
+  } catch (error) {
+    return { error };
+  }
+};
+
+export default Dashboard;
