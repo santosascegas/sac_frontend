@@ -1,0 +1,33 @@
+.bannerAgendamento {
+    background: #cc4137
+}
+
+.bannerAgendamento h2 {
+    color: #fff;
+}
+
+.bannerAgendamento .insideBox {
+    background-color: #B6000B;
+    padding: 15px;
+    border-radius: 0.7rem;
+    color: #fff;
+    margin-top: 2.5rem;
+    margin-bottom: 2.8rem;
+}
+
+.bannerAgendamento .agendamentoButton {
+    color: #fff;
+    font-size: 64px;
+    border: 5px solid #fff;
+    padding: 10px;
+    transition: all ease .5s;
+}
+
+.bannerAgendamento .agendamentoButton:hover {
+    color: rgb(209, 205, 205);
+    border-color: rgb(209, 205, 205);
+}
+
+.bannerAgendamentoImagem {
+    padding-right: 0;
+}

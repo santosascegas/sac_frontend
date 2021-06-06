@@ -1,0 +1,19 @@
+.faq {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.faq .duvidasCard {
+    text-align: justify;
+    width: 70%;
+    margin-top: 1.4rem;
+}
+
+.faq .duvidasRow {
+    margin-top: 1.2rem;
+}
+
+.faq .duvidasRow #impar {
+    display: flex;
+    justify-content: flex-end;
+}

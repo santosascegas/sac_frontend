@@ -1,0 +1,22 @@
+.footer {
+    height: 20vh;
+    background-color: #0B0700;
+    padding-top: 20px;
+}
+
+.footer .footerRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .footerRow .col-lg-4 {
+    text-align: center;
+}
+
+.footer .footerRow .col-lg-4 h4 {
+    color: white;
+}
+
+.footer .footerRow .col-lg-4 a:not(:first-of-type) {
+    margin-left: 1.2rem;
+}

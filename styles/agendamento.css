@@ -1,0 +1,36 @@
+.agendamento {
+    margin-top: 2rem;
+}
+
+.agendamento .dateRow {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.agendamento .dateButton {
+    background-color: #fff;
+    border: 1px solid #cc4137;
+    color: #0B0700;
+    width: 20vw;
+    height: 20vh;
+    transition: all 1s ease;
+}
+
+.agendamento .dateButton span {
+    display: block;
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+.agendamento .dateButton:hover {
+    background-color: rgb(231, 230, 230);
+}
+
+.agendamento .userForm {
+    margin-top: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.agendamento .userForm .form-group {
+    margin-top: 1.2rem;
+}
