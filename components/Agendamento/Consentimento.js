@@ -1,19 +1,28 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-import { perguntasOpcionais, perguntasObrigatorias } from '../../helpers/PerguntasConsentimento'
+import { perguntasOpcionais, perguntasObrigatorias } from '../../helpers/PerguntasConsentimento';
 
-const Consentimento = () => {
+import axios from 'axios';
+
+const Consentimento = ({ data, userInfo }) => {
   
   const [respostasOpcionais, setRespostasOpcionais] = React.useState({})
   const [respostasObrigatorias, setRespostasObrigatorias] = React.useState({})
 
   const checkAtestado = () => {
-   return Object.keys(respostasOpcionais).map((rKey) => {
+   const opcionais =  Object.keys(respostasOpcionais).map((rKey) => {
      if (respostasOpcionais[rKey]) return false;
 
      return true;
    });
+
+   let k = 0;
+   for (let i = 0; i < opcionais.length ; i++) {
+     if (!opcionais[i]) k++;
+   }
+
+   return k;
   }
 
   const checkObrigatorias = () => {
@@ -24,13 +33,28 @@ const Consentimento = () => {
    });
   }
   
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const precisaAtesteado = checkAtestado()
-    const perguntasObrigados = checkObrigatorias();
 
-    if (precisaAtesteado.includes(false)) console.log('precisa');
-    if (perguntasObrigados.includes(false)) console.log('negado');
+    const dados = {
+      nomeUsuario: userInfo.nome,
+      emailUsuario: userInfo.email,
+      documento: userInfo.documento,
+      telefone: userInfo.telefone,
+      dt: new Date(data.data).toISOString(),
+      atestado: precisaAtesteado >= 3 ? 1 : 0
+    }
+
+
+    try {
+      const response = await axios.post('http://localhost:8080/agendamento/', dados);
+      console.log(response);
+    } catch (error) {
+      setErrorRestaurants(error);
+    }
   }
+
+  const checkPerguntasObrigatorias = checkObrigatorias();
 
   const renderPergunta = (pergunta, index) => (
     <>
@@ -101,7 +125,13 @@ const Consentimento = () => {
         { perguntasOpcionais.map((po, index) => renderPergunta(po, index+1)) }
         { perguntasObrigatorias.map((po, index) => renderPerguntaObrigatoria(po, perguntasOpcionais.length+index+1)) }
 
-        <Button onClick={handleSubmit} className="actionButton" style={{ marginTop: '2rem' }}>
+        <Button 
+          onClick={handleSubmit} 
+          disabled={(Object.keys(respostasOpcionais).length != perguntasOpcionais.length) 
+            || (Object.keys(respostasObrigatorias).length != perguntasObrigatorias.length) || checkPerguntasObrigatorias.includes(true)} 
+          className="actionButton"
+          style={{ marginTop: '2rem' }}
+        >
           Enviar
         </Button>
       </>

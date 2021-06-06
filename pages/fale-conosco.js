@@ -19,6 +19,29 @@ const Index = () => {
   const [params, setParams] = React.useState({});
 
   const handleSubmit = () => {
+    if (!/.+@.+\..+/.test(params.email)) {
+      setError('Endereço de email inválido. Por favor, preencha com dados válidos');
+      return;
+    }
+
+    const regexTelefone = new RegExp('^\\([0-9]{2}\\)((3[0-9]{3}-[0-9]{4})|(9[0-9]{3}-[0-9]{5}))$');
+
+    if (regexTelefone.test(params.telefone)) {
+      setError('Número de telefone inválido. Por favor, preencha com dados válidos');
+      return;
+    }
+
+    if (!params.assunto) {
+      setError('Um assunto é necessário');
+      return;
+    }
+
+    if (!params.mensagem) {
+      setError('Uma mensagem é necessária');
+      return;
+    }
+
+    setError(null);
     console.log(params);
   }
 
@@ -32,6 +55,9 @@ const Index = () => {
         <Container>
           <h2>Fale Conosco</h2>
 
+          { error && (
+            <p style={{ color: 'red' }}>{error}</p>
+          ) }
           <Row>
             <Col lg={4}>
                 <div className="faleConoscoImg">
