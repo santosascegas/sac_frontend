@@ -25,12 +25,12 @@ const UserForm = ({ setUserInfo }) => {
             <Input type="text" name="nome" id="nome" onChange={(e) => {setNome(e.target.value)}}/>
           </FormGroup>
           <FormGroup>
-            <Label for="Email">Password</Label>
+            <Label for="Email">Email</Label>
             <Input type="email" name="email" id="Email" onChange={(e) => {setEmail(e.target.value)}}/>
           </FormGroup>
           <FormGroup>
             <Label for="documento">Número RG ou RNE</Label>
-            <Input type="text" name="documento" id="documento" onChange={(e) => {setDocumento(e.target.value)}}/>
+            <Input type="number" name="documento" id="documento" onChange={(e) => {setDocumento(e.target.value)}}/>
           </FormGroup>
         </Form>
 
