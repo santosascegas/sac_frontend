@@ -13,7 +13,7 @@ import {
 import AccessibilityMenu from './AccessibilityMenu';
 import Link from 'next/link'
 
-const Header = () => {
+const Header = ({ neverStick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <>
     <AccessibilityMenu />
-    <div className={`header${sticky ? ' sticky' : ''}`}>
+    <div className={`header${(sticky && !neverStick) ? ' sticky' : ''}`}>
       <Navbar light expand="md">
         <Container>
           <NavbarBrand href="/">

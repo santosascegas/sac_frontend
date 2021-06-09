@@ -11,7 +11,7 @@ export const trajetos = [
         </>
     },
     {
-        img: './images/trajeto/temp.jpg',
+        img: './images/trajeto/trajeto2.jpeg',
         alt: '',
         corpo:  
         <>

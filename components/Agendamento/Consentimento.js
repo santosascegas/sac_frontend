@@ -5,7 +5,7 @@ import { perguntasOpcionais, perguntasObrigatorias } from '../../helpers/Pergunt
 
 import axios from 'axios';
 
-const Consentimento = ({ data, userInfo }) => {
+const Consentimento = ({ data, userInfo, setError, setSuccess }) => {
   
   const [respostasOpcionais, setRespostasOpcionais] = React.useState({})
   const [respostasObrigatorias, setRespostasObrigatorias] = React.useState({})
@@ -41,16 +41,17 @@ const Consentimento = ({ data, userInfo }) => {
       emailUsuario: userInfo.email,
       documento: userInfo.documento,
       telefone: userInfo.telefone,
-      dt: new Date(data.data).toISOString(),
+      dt: data.data,
       atestado: precisaAtesteado >= 3 ? 1 : 0
     }
 
 
     try {
-      const response = await axios.post('http://localhost:8080/agendamento/', dados);
-      console.log(response);
-    } catch (error) {
-      setErrorRestaurants(error);
+      await axios.post('http://localhost:8080/agendamento/', dados);
+      // await axios.delete(`http://localhost:8080/datas/${data.id}`);
+      setSuccess(true);
+      } catch (error) {
+      setError(error);
     }
   }
 
@@ -58,7 +59,7 @@ const Consentimento = ({ data, userInfo }) => {
 
   const renderPergunta = (pergunta, index) => (
     <>
-      <p className="m-0" style={{ textAlign: "justify" }}><strong>{index}. {pergunta}</strong></p>
+      <p className="m-0 perguntaConsentimento" style={{ textAlign: "justify" }}><strong>{index}. {pergunta}</strong></p>
       <Form className="consentimento">
           <FormGroup tag="fieldset" className="d-flex mb-3 mt-2">
             <FormGroup check>
@@ -84,7 +85,7 @@ const Consentimento = ({ data, userInfo }) => {
 
   const renderPerguntaObrigatoria = (pergunta, index) => (
     <>
-      <p className="m-0" style={{ textAlign: "justify" }}><strong>{index}. {pergunta}</strong></p>
+      <p className="m-0 perguntaConsentimento" style={{ textAlign: "justify" }}><strong>{index}. {pergunta}</strong></p>
       <Form className="consentimento">
           <FormGroup tag="fieldset" className="d-flex mb-3 mt-2">
             <FormGroup check>

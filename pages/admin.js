@@ -1,9 +1,6 @@
 import React from 'react';
 
 import Layout from "../components/Common/Layout";
-import DatePicker from "../components/Agendamento/DatePicker";
-import UserForm from "../components/Agendamento/UserForm";
-import Consentimento from "../components/Agendamento/Consentimento";
 
 import { 
   Container, 
@@ -14,6 +11,8 @@ import {
   Button
 } from "reactstrap";
 
+import Link from 'next/link'
+
 const Index = () => {
   const [login, setLogin] = React.useState(null);
   const [senha, setSenha] = React.useState(null);
@@ -22,7 +21,7 @@ const Index = () => {
   }
 
   return (
-    <Layout pageTitle="Santos as Cegas | Admin" inicio="admin">
+    <Layout pageTitle="Santos as Cegas | Admin" inicio="admin" neverStick={true}> 
       <section className="admin" id="admin">
         <Container>
           <img
@@ -44,10 +43,11 @@ const Index = () => {
           </FormGroup>
         </Form>
 
-        <Button id="enviarAdmin" onClick={handleSubmit}>
-          Entrar
-        </Button>
-
+        <Link href="/dashboard">
+          <Button id="enviarAdmin">
+              Entrar
+            </Button>
+        </Link>
           
         </Container>
       </section>

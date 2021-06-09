@@ -18,7 +18,7 @@ const Layout = (props) => {
         />
       </Head>
       <div>
-        <Header />
+        <Header neverStick={props.neverStick}/>
         {props.children}
         <Footer inicio={props.inicio} />
       </div>

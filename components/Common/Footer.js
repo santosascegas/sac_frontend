@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from "reactstrap";
-import { FaInstagram, FaWhatsapp, FaEnvelope} from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp, FaEnvelope, FaRegCopyright } from 'react-icons/fa';
 
 import FooterHeader from './FooterHeader';
 
@@ -10,13 +10,9 @@ const Footer = ({inicio}) => {
    <>
     <FooterHeader inicio={inicio} />
     <section className="footer section">
-      <Container>
-        <Row className="footerRow">
-        <Col lg={4}>
-            <h4>Parceiros</h4>
-          </Col>
-          <Col lg={4}>
-            <h4>Redes Sociais</h4>
+      <Container className="footerContainer">
+          <p><FaRegCopyright /> Santos às Cegas. Todos os Direitos Reservados</p>
+          <div>
             <a href="#">
               <FaInstagram color="#fff" size={35}/>
             </a>
@@ -26,8 +22,7 @@ const Footer = ({inicio}) => {
             <a href="#">
               <FaEnvelope color="#fff" size={35}/>
             </a>
-          </Col>
-        </Row>
+          </div>
       </Container>
     </section>
    </>

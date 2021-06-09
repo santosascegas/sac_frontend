@@ -60,3 +60,9 @@ body[data-theme="blue"] {
   --color-bg-primary: #002673;
 }
 
+.form-group.required label:after {
+  content:"*";
+  color:red;
+  padding-left: 3px;
+}
+

@@ -4,19 +4,17 @@
     padding-top: 20px;
 }
 
-.footer .footerRow {
+.footer .footerContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.footer .footerRow .col-lg-4 {
-    text-align: center;
-}
-
-.footer .footerRow .col-lg-4 h4 {
+.footer .footerContainer p {
     color: white;
 }
 
-.footer .footerRow .col-lg-4 a:not(:first-of-type) {
+.footer .footerContainer a:not(:first-of-type) {
     margin-left: 1.2rem;
 }

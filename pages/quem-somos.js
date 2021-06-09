@@ -13,7 +13,7 @@ import { trajetos } from '../helpers/Trajetos';
 const Index = () => {
 
   return (
-    <Layout pageTitle="Santos as Cegas | Quem Somos" inicio="quemSomos">
+    <Layout pageTitle="Santos as Cegas | Quem Somos" inicio="quemSomos" neverStick={true}>
       <section className="quemSomos" id="quemSomos">
         <Container>
           <h2>Quem Somos</h2>

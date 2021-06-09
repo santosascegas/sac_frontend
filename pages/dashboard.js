@@ -13,21 +13,25 @@ import {
   Collapse
 } from "reactstrap";
 
-const Dashboard = ({ agendamentos, error }) => {
-  const datasCadastradas = [
-    "11/06/2021 09:30",
-    "12/06/2021 11:40",
-  ]
+import Link from 'next/link'
+
+const Dashboard = ({ agendamentos, datas, error }) => {
+
+  const [datasD, setDatasD] = React.useState(datas);
 
   const [openAgendamento, setOpenAgendamento] = React.useState(false);
   const [openDatas, setOpenDatas] = React.useState(false);
 
   return (
-    <Layout pageTitle="Santos as Cegas | Dashboard" inicio="dashboard">
+    <Layout pageTitle="Santos as Cegas | Dashboard" inicio="dashboard" neverStick={true}>
       <section className="dashboard" id="dashboard">
         <Container>
 
-          <Button style={{ marginBottom: '1.2rem' }}>Sair</Button>
+          <Link href="/">
+            <Button style={{ marginBottom: '1.2rem' }}>
+              Sair
+            </Button>
+          </Link>
 
           <Button className="collapseHeader" onClick={() => {setOpenDatas(!openDatas)}}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -38,7 +42,8 @@ const Dashboard = ({ agendamentos, error }) => {
 
           <Collapse isOpen={openDatas}>
             <DatasCadastro 
-              datas={datasCadastradas}
+              datas={datasD}
+              setDatas={setDatasD}
             />
           </Collapse>
 
@@ -71,9 +76,11 @@ const Dashboard = ({ agendamentos, error }) => {
 
 Dashboard.getInitialProps = async ctx => {
   try {
-    const res = await axios.get('http://0.0.0.0:8080/agendamento/');
-    const agendamentos = res.data;
-    return { agendamentos };
+    const resAgendamento = await axios.get('http://0.0.0.0:8080/agendamento/');
+    const resDatas = await axios.get('http://0.0.0.0:8080/datas/');
+    const agendamentos = resAgendamento.data;
+    const datas = resDatas.data;
+    return { agendamentos, datas };
   } catch (error) {
     return { error };
   }

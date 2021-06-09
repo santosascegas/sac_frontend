@@ -44,19 +44,20 @@ const UserForm = ({ setUserInfo }) => {
           <p style={{ color: 'red' }}>{error}</p>
         ) }
         <Form className="userForm">
-          <FormGroup>
+          <FormGroup className="required">
             <Label for="nome">Nome</Label>
             <Input type="text" name="nome" id="nome" onChange={(e) => {setNome(e.target.value)}}/>
           </FormGroup>
-          <FormGroup>
-            <Label for="Email">Email</Label>
+          <FormGroup className="required">
+            <Label for="Email">E-mail</Label>
             <Input type="email" name="email" id="Email" onChange={(e) => {setEmail(e.target.value)}}/>
           </FormGroup>
-          <FormGroup>
+          <FormGroup className="required">
             <Label for="documento">Número RG ou RNE</Label>
             <Input type="number" name="documento" id="documento" onChange={(e) => {setDocumento(e.target.value)}}/>
           </FormGroup>
-          <FormGroup>
+          <FormGroup className="required">
+            <Label for="telefone">Telefone</Label>
             <InputMask mask="(99) 99999-9999" value={telefone} onChange={(e) => {setTelefone(e.target.value)}}>
               {(inputProps) => <Input {...inputProps} name="telefone" id="telefone" />}
             </InputMask>

@@ -13,7 +13,7 @@ import { duvidasFrequentes } from '../helpers/DuvidasFrequentes';
 const Index = () => {
 
   return (
-    <Layout pageTitle="Santos as Cegas | Dúvidas Frequentes" inicio="faq">
+    <Layout pageTitle="Santos as Cegas | Dúvidas Frequentes" inicio="faq" neverStick={true}>
       <section className="faq" id="faq">
         <Container>
           <h2>Dúvidas Frequentes</h2>

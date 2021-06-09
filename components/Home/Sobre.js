@@ -16,12 +16,6 @@ const Sobre = () => {
       desc: ""
     },
     {
-      id: 3,
-      img: "./images/Unlimited.jpg",
-      title: "Dúvidas Frequentes",
-      desc: ""
-    },
-    {
       id: 4,
       img: "./images/Atlantico.jpg",
       title: "Fale Conosco",
@@ -31,7 +25,7 @@ const Sobre = () => {
 
   const RenderJanelas = () => janelas.map((janela, key) => (
 
-    <Col key={key} lg={3}>
+    <Col key={key} lg={4}>
       <Card style={{ width: '18rem', height: '70vh', border: '2px solid #cc4137' }}>
         <div style={{ padding: '20px' }}>
           <CardImg style={{ height: '30vh', objectFit: 'cover' }} variant="top" src={janela.img} />

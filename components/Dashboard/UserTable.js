@@ -17,16 +17,19 @@ const UserTable = ({ agendamentos }) => {
     </thead>
     <tbody>
       {
-        agendamentos.map((a, key) => (
-          <tr key={key}>
-            <th scope="row">{a.dt}</th>
-            <td>{a.nomeUsuario}</td>
-            <td>{a.emailUsuario}</td>
-            <td>{a.documento}</td>
-            <td>{a.telefone}</td>
-            <td>{a.atestado}</td>
-          </tr>
-        ))
+        agendamentos.map((a, key) => {
+          const split = a.dt.split('&');
+          return (
+            <tr key={key}>
+              <th scope="row">{split[0]} - {split[1]}</th>
+              <td>{a.nomeUsuario}</td>
+              <td>{a.emailUsuario}</td>
+              <td>{a.documento}</td>
+              <td>{a.telefone}</td>
+              <td>{a.atestado}</td>
+            </tr>
+          )
+        })
       }
     </tbody>
   </Table>

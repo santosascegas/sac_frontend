@@ -40,3 +40,10 @@
     background-color: #000;
     width: 20%;
 }
+
+.agendamento .perguntaConsentimento:after {
+    content:"*";
+    color:red;
+    padding-left: 3px;
+  }
+  
