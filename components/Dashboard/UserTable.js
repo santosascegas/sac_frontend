@@ -18,7 +18,7 @@ const UserTable = ({ agendamentos }) => {
     <tbody>
       {
         agendamentos.map((a, key) => {
-          const split = a.dt.split('&');
+          const split = a.data?.data.split('&');
           return (
             <tr key={key}>
               <th scope="row">{split[0]} - {split[1]}</th>

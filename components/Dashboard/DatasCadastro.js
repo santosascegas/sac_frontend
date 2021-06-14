@@ -24,6 +24,7 @@ const DatasCadastro = ({ datas, setDatas }) => {
     try {
       await axios.post('http://localhost:8080/datas', {
         data: merged,
+        status: 0
       });
     } catch (error) {
       console.log(error);

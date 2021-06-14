@@ -42,8 +42,14 @@
 }
 
 .agendamento .perguntaConsentimento:after {
-    content:"*";
+    content: "*";
     color:red;
     padding-left: 3px;
   }
   
+/* .footerDiv { 
+    position: fixed;
+    left: 0; 
+    bottom: 0; 
+    width: 100%;
+} */

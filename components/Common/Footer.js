@@ -7,7 +7,7 @@ import FooterHeader from './FooterHeader';
 const Footer = ({inicio}) => {
   
   return (
-   <>
+   <div className="footerDiv">
     <FooterHeader inicio={inicio} />
     <section className="footer section">
       <Container className="footerContainer">
@@ -25,7 +25,7 @@ const Footer = ({inicio}) => {
           </div>
       </Container>
     </section>
-   </>
+   </div>
   );
 }
 export default Footer;

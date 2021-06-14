@@ -41,7 +41,7 @@ const Consentimento = ({ data, userInfo, setError, setSuccess }) => {
       emailUsuario: userInfo.email,
       documento: userInfo.documento,
       telefone: userInfo.telefone,
-      dt: data.data,
+      data: { ...data },
       atestado: precisaAtesteado >= 3 ? 1 : 0
     }
 

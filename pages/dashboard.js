@@ -77,9 +77,9 @@ const Dashboard = ({ agendamentos, datas, error }) => {
 Dashboard.getInitialProps = async ctx => {
   try {
     const resAgendamento = await axios.get('http://0.0.0.0:8080/agendamento/');
-    const resDatas = await axios.get('http://0.0.0.0:8080/datas/');
-    const agendamentos = resAgendamento.data;
-    const datas = resDatas.data;
+    const resDatas = await axios.get('http://0.0.0.0:8080/datas/status');
+    const agendamentos = resAgendamento.data || [];
+    const datas = resDatas.data || [];
     return { agendamentos, datas };
   } catch (error) {
     return { error };
