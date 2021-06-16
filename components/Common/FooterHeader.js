@@ -4,7 +4,7 @@ const FooterHeader = ({ inicio }) => {
 
   return (
     <div className="footerHeader">
-      <a href={`#${inicio}`} className="voltar" id="voltarAoInicio" role="cabecalho do footer">Voltar ao início</a>
+      <a href={`#${inicio}`} className="voltar" id="voltarAoInicio" role="cabecalhoFooter">Voltar ao início</a>
     </div>
   );
 }

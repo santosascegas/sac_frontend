@@ -14,7 +14,7 @@ const Index = () => {
 
   return (
     <Layout pageTitle="Santos as Cegas | Dúvidas Frequentes" inicio="faq" neverStick={true}>
-      <section className="faq" id="faq" role="duvidas frequentes">
+      <section className="faq" id="faq" role="duvidasFrequentes">
         <Container>
           <h2>Dúvidas Frequentes</h2>
 
