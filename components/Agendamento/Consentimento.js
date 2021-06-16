@@ -5,7 +5,7 @@ import { perguntasOpcionais, perguntasObrigatorias } from '../../helpers/Pergunt
 
 import axios from 'axios';
 
-const Consentimento = ({ data, userInfo, setError, setSuccess }) => {
+const Consentimento = ({ data, userInfo, setError, setSuccess, setLoading }) => {
   
   const [respostasOpcionais, setRespostasOpcionais] = React.useState({})
   const [respostasObrigatorias, setRespostasObrigatorias] = React.useState({})
@@ -34,6 +34,7 @@ const Consentimento = ({ data, userInfo, setError, setSuccess }) => {
   }
   
   const handleSubmit = async () => {
+    setLoading(true)
     const precisaAtesteado = checkAtestado()
 
     const dados = {
@@ -42,16 +43,17 @@ const Consentimento = ({ data, userInfo, setError, setSuccess }) => {
       documento: userInfo.documento,
       telefone: userInfo.telefone,
       data: { ...data },
-      atestado: precisaAtesteado >= 3 ? 1 : 0
+      atestado: precisaAtesteado >= 1 ? 1 : 0
     }
 
 
     try {
       await axios.post('http://localhost:8080/agendamento/', dados);
-      // await axios.delete(`http://localhost:8080/datas/${data.id}`);
       setSuccess(true);
+      setLoading(false);
       } catch (error) {
       setError(error);
+      setLoading(false);
     }
   }
 
@@ -85,7 +87,7 @@ const Consentimento = ({ data, userInfo, setError, setSuccess }) => {
 
   const renderPerguntaObrigatoria = (pergunta, index) => (
     <>
-      <p className="m-0 perguntaConsentimento" style={{ textAlign: "justify" }}><strong>{index}. {pergunta}</strong></p>
+      <p className="m-0 perguntaConsentimento" style={{ textAlign: "justify" }}><strong>{index}. {pergunta.pergunta}</strong></p>
       <Form className="consentimento">
           <FormGroup tag="fieldset" className="d-flex mb-3 mt-2">
             <FormGroup check>
@@ -93,7 +95,7 @@ const Consentimento = ({ data, userInfo, setError, setSuccess }) => {
               <Input type="radio" name="radio1" onChange={() => {
                 setRespostasObrigatorias({ ...respostasObrigatorias, [index]: true })
               }}/>
-                Sim, autorizo
+                {pergunta.respPositiva}
               </Label>
             </FormGroup>
             <FormGroup check style={{ marginLeft: '1.1rem' }}>
@@ -101,7 +103,7 @@ const Consentimento = ({ data, userInfo, setError, setSuccess }) => {
                 <Input type="radio" name="radio1" onChange={() => {
                 setRespostasObrigatorias({ ...respostasObrigatorias, [index]: false })
               }}/>
-                Não, não autorizo
+                {pergunta.respNegativa}
               </Label>
             </FormGroup>
           </FormGroup>
@@ -111,9 +113,9 @@ const Consentimento = ({ data, userInfo, setError, setSuccess }) => {
 
   return (
       <>
-        <h3>Consentimento de Participação</h3>
+        <h4>Consentimento de Participação</h4>
 
-        <p className="my-4">
+        <p className="my-4" style={{ textAlign:"justify" }}>
           Este documento faz parte da documentação do projeto “Santos às Cegas” e tem o objetivo de apontar e firmar os entendimentos e concordâncias relativas as condicionantes dos trajetos que ocorrerão na ciclovia da Orla de Santos.
           <br />
           <br />A CONCORDÂNCIA DIGITAL FIRMA A VERACIDADE DAS INFORMAÇÕES PRESTADAS POR MIM, VONTADE PRÓPRIA E CONSENTIMENTO DE ESTAR DE ACORDO COM AS INFORMAÇÕES PRESTADAS NO PROJETO.  
@@ -122,6 +124,8 @@ const Consentimento = ({ data, userInfo, setError, setSuccess }) => {
           <br />
           <br />Tem dúvidas? Escreva para santosascegas@gmail.com
         </p>
+
+        <p>O sinal de <span style={{ color: 'red' }}>*</span> indica que o preenchimento do campo é obrigatório</p>
 
         { perguntasOpcionais.map((po, index) => renderPergunta(po, index+1)) }
         { perguntasObrigatorias.map((po, index) => renderPerguntaObrigatoria(po, perguntasOpcionais.length+index+1)) }

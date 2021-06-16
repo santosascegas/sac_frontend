@@ -1,3 +1,9 @@
+.dashboard {
+    min-height: 55vh;
+    display: flex;
+    align-items: center;
+}
+
 .dashboard .collapseHeader {
     background-color: transparent;
     color: var(--color-text-primary);

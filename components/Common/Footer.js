@@ -11,15 +11,15 @@ const Footer = ({inicio}) => {
     <FooterHeader inicio={inicio} />
     <section className="footer section">
       <Container className="footerContainer">
-          <p><FaRegCopyright /> Santos às Cegas. Todos os Direitos Reservados</p>
+          <p><FaRegCopyright /> Santos às Cegas. Todos os Direitos Reservados para Santos às Cegas.</p>
           <div>
-            <a href="#">
+            <a href="https://www.instagram.com/con_tacto3d/" target="_blank">
               <FaInstagram color="#fff" size={35}/>
             </a>
-            <a href="#">
+            <a href="https://wa.link/nzdtiv" target="_blank">
               <FaWhatsapp color="#fff" size={35}/>
             </a>
-            <a href="#">
+            <a href="mailto:santosascegas@gmail.com">
               <FaEnvelope color="#fff" size={35}/>
             </a>
           </div>

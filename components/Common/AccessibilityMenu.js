@@ -16,12 +16,12 @@ const AccessibilityMenu = () => {
     <div className='sticky accessibilityMenu'>
       <Container>
         <Row className="controlsRow">
-          <Col lg={6} style={{ textAlign: 'center' }}>
+          <Col xs={6} md={6} style={{ textAlign: 'center' }}>
             <button className="fontSizeButton" id="decreaseFont">A-</button>
             <button className="fontSizeButton ml-4" id="increaseFont">A+</button>
           </Col>
-          <Col lg={6} className="contrastOptions">
-            <p>Contraste: </p>
+          <Col xs={6} md={6} className="contrastOptions">
+            <p>Contraste </p>
             <button className="colorOption" id="light" 
               style={{ 
                 border: '2px solid #0B0700',

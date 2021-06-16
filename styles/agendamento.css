@@ -1,11 +1,18 @@
 .agendamento {
     margin-top: 2rem;
     margin-bottom: 2rem;
+    min-height: 55vh;
 }
 
 .agendamento .dateRow {
     margin-top: 2rem;
     margin-bottom: 2rem;
+}
+
+.agendamento .dateRow .col-lg-3 {
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: center;
 }
 
 .agendamento .dateButton {
@@ -30,6 +37,7 @@
 .agendamento .userForm {
     margin-top: 1.4rem;
     margin-bottom: 2rem;
+    width: 40%;
 }
 
 .agendamento .userForm .form-group {
@@ -41,15 +49,24 @@
     width: 20%;
 }
 
+.agendamento .form-check-input[type=radio]:hover {
+    cursor: pointer;
+}
+
 .agendamento .perguntaConsentimento:after {
     content: "*";
     color:red;
     padding-left: 3px;
   }
-  
-/* .footerDiv { 
-    position: fixed;
-    left: 0; 
-    bottom: 0; 
-    width: 100%;
-} */
+ 
+@media only screen and (max-width: 768px) {
+    .agendamento .dateButton {
+        width: 100%;
+        height: 100%;
+    }
+ 
+    .agendamento .userForm {
+        width: 100%;
+    }
+    
+}

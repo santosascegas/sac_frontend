@@ -26,7 +26,7 @@ const UserTable = ({ agendamentos }) => {
               <td>{a.emailUsuario}</td>
               <td>{a.documento}</td>
               <td>{a.telefone}</td>
-              <td>{a.atestado}</td>
+              <td>{a.atestado == 1 ? 'Sim' : 'Não'}</td>
             </tr>
           )
         })

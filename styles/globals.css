@@ -66,3 +66,17 @@ body[data-theme="blue"] {
   padding-left: 3px;
 }
 
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.loadingContainer .sr-only {
+  display: none;
+}
+
+#feature .card:hover {
+  cursor: pointer;
+}

@@ -3,14 +3,13 @@ import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 import InputMask from 'react-input-mask';
 
-const UserForm = ({ setUserInfo }) => {
+const UserForm = ({ setUserInfo, setError }) => {
   
   const [nome, setNome] = React.useState(null)
   const [email, setEmail] = React.useState(null)
   const [documento, setDocumento] = React.useState(null)
   const [telefone, setTelefone] = React.useState(null)
 
-  const [error, setError] = React.useState(null);
 
   const handleSubmit = () => {
     if (!/.+@.+\..+/.test(email)) {
@@ -38,11 +37,9 @@ const UserForm = ({ setUserInfo }) => {
 
   return (
       <>
-        <h3>Preencha com suas informações</h3>
+        <h4>Preencha com suas informações</h4>
+        <p>O sinal de <span style={{ color: 'red' }}>*</span> indica que o preenchimento do campo é obrigatório</p>
 
-        { error && (
-          <p style={{ color: 'red' }}>{error}</p>
-        ) }
         <Form className="userForm">
           <FormGroup className="required">
             <Label for="nome">Nome</Label>

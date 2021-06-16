@@ -6,7 +6,7 @@ const DatePicker = ({ datas, setData }) => (
         {
           datas.length > 0 ? (
             <>
-              <h3>Escolha uma Data Disponível</h3>
+              <h4>Escolha uma Data Disponível</h4>
               <Row className="dateRow">
               {
                 datas.map((dt, key) => {
@@ -15,7 +15,7 @@ const DatePicker = ({ datas, setData }) => (
                   const horario = data.split('&')[1];
 
                   return (
-                    <Col key={key} lg={3} md={6}>
+                    <Col key={key} lg={3} sm={6} xs={12}>
                       <Button className="dateButton" onClick={() => {setData(dt)}}>
                        <span>
                         <strong>

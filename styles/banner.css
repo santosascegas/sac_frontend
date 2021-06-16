@@ -1,5 +1,6 @@
 .bannerAgendamento {
-    background: #cc4137
+    background: #cc4137;
+    height: 100%;
 }
 
 .bannerAgendamento h2 {
@@ -30,4 +31,50 @@
 
 .bannerAgendamentoImagem {
     padding-right: 0;
+}
+
+@media only screen and (max-width: 1400px) {
+    .bannerAgendamento {
+      max-height: 55vh;
+    }
+  
+    .bannerAgendamento h2 {
+      font-size: 1.5rem;
+    }
+  
+    .bannerAgendamento .insideBox {
+      padding: 10px;
+      margin-top: 2rem;
+      margin-bottom: 2.2rem;
+    }
+  
+    .bannerAgendamento .agendamentoButton {
+      font-size: 48px;
+      padding: 8px;
+    }
+  }
+
+@media only screen and (max-width: 900px) {
+    .bannerAgendamento {
+        max-width: 80%;
+    }
+
+    .bannerAgendamento h2 {
+        font-size: 1rem;
+    }
+
+    .bannerAgendamento .insideBox {
+        padding: 7px;
+        margin-top: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .bannerAgendamento .agendamentoButton {
+        font-size: 30px;
+        padding: 5px;
+    }
+
+    .bannerRow {
+        justify-content: center;
+    }
 }

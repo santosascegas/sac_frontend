@@ -38,7 +38,7 @@ const Header = ({ neverStick }) => {
         <Container>
           <NavbarBrand href="/">
             <img
-              alt=""
+              alt="Santos às cegas: Marca Santos às cegas. Texto e desenhos nas cores vermelho e preto"
               src="./images/logo-principal.png"
               width="120"
               height="100"

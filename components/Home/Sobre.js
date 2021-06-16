@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card, CardImg, CardBody, CardTitle, CardText } from "reactstrap";
+import Link from 'next/link'
 
 const Sobre = () => {
   const janelas = [
@@ -7,36 +8,44 @@ const Sobre = () => {
       id: 1,
       img: "./images/Muretas3.jpg",
       title: "Dúvidas Frequentes",
-      desc: "Página dedicada para informar e retirar dúvidas sobre o projeto Santos às Cegas."
+      desc: "Página dedicada para informar e retirar dúvidas sobre o projeto Santos às Cegas.",
+      link: "/faq",
+      alt: "Botao e imagem referente a pagina de duvidas frequentes",
     },
     {
       id: 2,
       img: "./images/TomieOhtake.jpg",
       title: "Trajeto",
-      desc: ""
+      desc: "",
+      link: "/trajeto",
+      alt: "Botao e imagem referente a pagina de trajeto",
     },
     {
       id: 4,
       img: "./images/Atlantico.jpg",
       title: "Fale Conosco",
-      desc: ""
+      desc: "",
+      link: "/fale-conosco",
+      alt: "Botao e imagem referente a pagina de fale conosco",
     },
   ];
 
   const RenderJanelas = () => janelas.map((janela, key) => (
 
-    <Col key={key} lg={4}>
-      <Card style={{ width: '18rem', height: '70vh', border: '2px solid #cc4137' }}>
-        <div style={{ padding: '20px' }}>
-          <CardImg style={{ height: '30vh', objectFit: 'cover' }} variant="top" src={janela.img} />
-        </div>
-        <CardBody style={{ padding: '20px' }}>
-          <CardTitle style={{ textAlign: 'center', fontWeight: 700, fontSize: '21px' }}>{janela.title}</CardTitle>
-          <CardText style={{ fontSize: '16px' }}>
-            {janela.desc}
-          </CardText>
-        </CardBody>
-      </Card>
+    <Col key={key} md={6} lg={4} sm={12} style={{ display: 'flex', justifyContent: 'center', marginTop: '1.2rem' }}>
+      <Link href={janela.link}>
+        <Card style={{ width: '18rem', height: '70vh', border: '2px solid #cc4137' }}>
+          <div style={{ padding: '20px' }}>
+            <CardImg style={{ height: '30vh', objectFit: 'cover' }} variant="top" src={janela.img} alt={janela.alt}/>
+          </div>
+          <CardBody style={{ padding: '20px' }}>
+            <CardTitle style={{ textAlign: 'center', fontWeight: 700, fontSize: '21px' }}>{janela.title}</CardTitle>
+            <CardText style={{ fontSize: '16px' }}>
+              {janela.desc}
+            </CardText>
+          </CardBody>
+        </Card>
+      </Link>
     </Col>
   )
   );

@@ -24,7 +24,7 @@ export const duvidasFrequentes = [
         corpo: 'Se no dia do agendamento observarmos situação de chuva, um de nós entrará em contato com você para desmarcarmos o passeio. No caso de chuva ao longo do trajeto, paramos em locais alternativos.'
     },
     {
-        titulo: 'Há paradas para alimentação e reidratação.',
+        titulo: 'Há paradas para alimentação e reidratação?',
         corpo: 'Sim. Há um roteiro previamente estabelecido e paradas são previstas.'
     },
     {

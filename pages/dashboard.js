@@ -1,11 +1,14 @@
 import React from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router'
 
 import Layout from "../components/Common/Layout";
 import UserTable from "../components/Dashboard/UserTable";
 import DatasCadastro from "../components/Dashboard/DatasCadastro";
 
-import { FaArrowDown } from 'react-icons/fa';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
+
+import { delete_cookie } from '../helpers/cookies';
 
 import { 
   Container, 
@@ -16,27 +19,38 @@ import {
 import Link from 'next/link'
 
 const Dashboard = ({ agendamentos, datas, error }) => {
+  const router = useRouter();
 
-  const [datasD, setDatasD] = React.useState(datas);
+  const [datasD, setDatasD] = React.useState(datas || []);
 
   const [openAgendamento, setOpenAgendamento] = React.useState(false);
   const [openDatas, setOpenDatas] = React.useState(false);
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    delete_cookie('authorization')
+    router.push('/admin');
+  }
 
   return (
     <Layout pageTitle="Santos as Cegas | Dashboard" inicio="dashboard" neverStick={true}>
       <section className="dashboard" id="dashboard">
         <Container>
 
-          <Link href="/">
-            <Button style={{ marginBottom: '1.2rem' }}>
-              Sair
-            </Button>
-          </Link>
+          <Button style={{ marginBottom: '1.2rem' }} onClick={handleLogout}>
+            Sair
+          </Button>
 
           <Button className="collapseHeader" onClick={() => {setOpenDatas(!openDatas)}}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span>Liberar datas para agendamento</span>
-              <FaArrowDown size={24} />
+              { 
+              openDatas ? 
+                <FaArrowDown size={24} /> 
+                :
+                <FaArrowUp size={24} />
+              }
             </div>
           </Button>
 
@@ -51,7 +65,12 @@ const Dashboard = ({ agendamentos, datas, error }) => {
           <Button className="collapseHeader" onClick={() => {setOpenAgendamento(!openAgendamento)}}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span>Consultar Trajetos Agendados </span>
-              <FaArrowDown size={24} />
+              { 
+              openAgendamento ? 
+                <FaArrowDown size={24} /> 
+                :
+                <FaArrowUp size={24} />
+              }
             </div>
           </Button>
           
@@ -62,7 +81,7 @@ const Dashboard = ({ agendamentos, datas, error }) => {
             ) :
               (
                 <UserTable 
-                  agendamentos={agendamentos}
+                  agendamentos={agendamentos || []}
                 />
               )
             }
@@ -74,15 +93,30 @@ const Dashboard = ({ agendamentos, datas, error }) => {
   )
 }
 
-Dashboard.getInitialProps = async ctx => {
+export async function getServerSideProps(ctx) {
+  const cookies = ctx.req?.headers.cookie;
+
+  if (!cookies.includes('authorization')) 
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/admin",
+      },
+      props: {},
+    };
+  
+  const parts = cookies?.split('authorization=');
+
   try {
-    const resAgendamento = await axios.get('http://0.0.0.0:8080/agendamento/');
+    const resAgendamento = await axios.get('http://0.0.0.0:8080/agendamento/', {
+      headers: ctx.req ? { Authorization: parts[1] } : undefined
+    });
     const resDatas = await axios.get('http://0.0.0.0:8080/datas/status');
-    const agendamentos = resAgendamento.data || [];
-    const datas = resDatas.data || [];
-    return { agendamentos, datas };
+    const agendamentos = resAgendamento.data;
+    const datas = resDatas.data;
+    return { props: { agendamentos, datas }  };
   } catch (error) {
-    return { error };
+    return { props: { error } };
   }
 };
 

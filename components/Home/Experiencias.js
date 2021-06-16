@@ -5,27 +5,27 @@ const Experiencias = () => {
   
   const Experiencias = [
     { 
-      alt: "Descricao da Imagem", 
+      alt: "Projeto muito bem pensado e elaborado. Me senti muito bem, muito feliz, incluída. Com certeza é um passeio que quero repetir e irei divulgar.", 
       img: "./images/experiencias/experiencia1.jpg" 
     },
     { 
-      alt:"Descricao da Imagem", 
+      alt:"O projeto é incrível. Principalmente porque foi concebido para pessoas com deficiência visual poderem unir um passeio seguro ao ar livre à ampliação de conhecimentos gerais, explorando tatilmente maquetes e miniaturas muito bem feitas.", 
       img : "./images/experiencias/experiencia2.jpg" 
     },
     { 
-      alt:"Descricao da Imagem", 
+      alt:"Adorei a vivência, desde a pedalada até a explicação dos monumentos. Santos é um lugar cheio de histórias legais que nos faz voltar no tempo.", 
       img : "./images/experiencias/experiencia3.jpg" 
     },
     { 
-      alt:"Descricao da Imagem", 
+      alt:"Amei a escala humana em todas as maquetes! A visão dos monumentos entendendo parte da cidade por meio do tato me comoveu muito!", 
       img : "./images/experiencias/experiencia4.jpg" 
     },
     { 
-      alt:"Descricao da Imagem", 
+      alt:"O projeto é incrível e adorei realizar o passeio, conheci mais da história da nossa cidade", 
       img : "./images/experiencias/experiencia5.jpg" 
     },
     {
-      alt:"Descricao da Imagem", 
+      alt:"Gostei do passeio porque aprendi história de pontos que eu não conhecia e pude ver a cidade de outra forma!", 
       img : "./images/experiencias/experiencia6.jpg" 
     },
   ]

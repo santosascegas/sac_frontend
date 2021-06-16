@@ -10,8 +10,7 @@ import { FaCheckCircle } from 'react-icons/fa';
 
 import { 
   Container, 
-  Row, 
-  Col 
+  Spinner
 } from "reactstrap";
 
 const Agendamento = ({ datas }) => {
@@ -20,6 +19,7 @@ const Agendamento = ({ datas }) => {
 
   const [success, setSuccess] = React.useState(false);
   const [error, setError] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
 
   return (
     <Layout pageTitle="Santos as Cegas | Agendamento" inicio="agendamento" neverStick={true}>
@@ -36,18 +36,28 @@ const Agendamento = ({ datas }) => {
           ) }
 
           { data && !userInfo && (
-            <UserForm setUserInfo={setUserInfo}/>
+            <UserForm setUserInfo={setUserInfo} setError={setError}/>
           ) }
 
           {
-            userInfo && !success && (
-              <Consentimento data={data} userInfo={userInfo} setSuccess={setSuccess} setError={setError}/>
+            userInfo && !success && !loading && (
+              <Consentimento data={data} userInfo={userInfo} setSuccess={setSuccess} setError={setError} setLoading={setLoading}/>
+            )
+          }
+
+          {
+            userInfo && loading && (
+              
+              <div className="loadingContainer">
+                <Spinner color="dark" aria-label="Enviando formulario" />
+              </div>
+              
             )
           }
 
           {
             success && (
-              <div style={{ width: '100%', height: '20vh', 
+              <div style={{ width: '100%', height: '50vh', 
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               flexDirection: 'column' }}>
                 <FaCheckCircle size={110}/>

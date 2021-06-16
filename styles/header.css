@@ -40,3 +40,22 @@
     -webkit-transform: translateY(0%);
             transform: translateY(0%);
   }
+
+  @media only screen and (max-width: 1400px) {
+    .navbar-expand-md .navbar-nav .nav-link {
+        font-size: 1.3rem;
+    }
+  }
+
+  @media only screen and (max-width: 900) {
+    .navbar-expand-md .navbar-nav .nav-link {
+        font-size: 0.8rem;
+    }
+  }
+  
+  @media only screen and (max-width: 568px) {
+    .navbar-expand-md .navbar-nav .nav-link {
+        font-size: 0.5rem;
+        padding: 0;
+    }
+  }

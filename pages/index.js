@@ -5,7 +5,7 @@ import Experiencias from '../components/Home/Experiencias';
 
 const Index = () => {
   return (
-    <Layout pageTitle="Santos as Cegas | Página Inicial" inicio="bannerInicio">
+    <Layout pageTitle="Santos as Cegas | Página Inicial" inicio="bannerInicio" neverStick={true}>
       <Banner />
       <Feature/>
       <Experiencias />

@@ -20,7 +20,7 @@ const Index = () => {
 
           <Row className="duvidasRow">
             { duvidasFrequentes.map((df, idx) => (
-              <Col lg={6} sm={12} id={idx % 2 != 0 ? 'impar' : 'par'}>
+              <Col lg={6} sm={12} id="card">
                 <div className="duvidasCard">
                   <strong>{df.titulo}</strong>
                   <p>{df.corpo}</p>
