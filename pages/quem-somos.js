@@ -24,21 +24,21 @@ const Index = () => {
           </div>
 
           <Row role="row">
-            <Col lg={4}>
+            <Col lg={4} role="cell">
               <img 
                 src="./images/quem-somos/equipe1.jpg" 
                 alt="Membros do projeto 1: Imagem de 5 pessoas divididas em 5 quadrados sendo 3 acima e 2 abaixo. Na primeira linha são 2 homens e uma mulher e na segunda linha, um homem e uma mulher." 
                 className="img-fluid mx-auto d-block"
               />
             </Col>
-            <Col lg={4}>
+            <Col lg={4} role="cell">
               <img 
                 src="./images/quem-somos/equipe2.jpg" 
                 alt="Membros do projeto 2: Imagem de 5 pessoas divididas em 5 quadrados sendo 3 acima e 2 abaixo. Na primeira linha, um homem e duas mulheres e na segunda linha, uma mulher e um homem." 
                 className="img-fluid mx-auto d-block"
               />
             </Col>
-            <Col lg={4}>
+            <Col lg={4} role="cell">
               <img 
                 src="./images/quem-somos/equipe3.jpg" 
                 alt="Membros do projeto 3: Imagem de 4 pessoas divididas em 4 quadrados sendo 3 acima e uma abaixo. Na primeira linha, três homem na segunda linha, uma mulher." 
@@ -48,7 +48,7 @@ const Index = () => {
           </Row>
 
           <Row className="logos" role="row">
-            <Col lg={4}>
+            <Col lg={4} role="cell">
               <a href="https://unisantos.br/" target="_blank">
                 <img 
                   src="./images/quem-somos/logo1.png" 
@@ -57,7 +57,7 @@ const Index = () => {
                 />
               </a>
             </Col>
-            <Col lg={4}>
+            <Col lg={4} role="cell">
               <a href="https://www.facebook.com/codepsantos/" target="_blank">
                 <img 
                   src="./images/quem-somos/logo2.png" 
@@ -66,7 +66,7 @@ const Index = () => {
                 />
               </a>
             </Col>
-            <Col lg={4}>
+            <Col lg={4} role="cell">
               <a href="https://www.tecnocubo.com.br/" target="_blank">
                 <img 
                   src="./images/quem-somos/logo3.png" 
@@ -75,7 +75,7 @@ const Index = () => {
                 />
               </a>
             </Col>
-            <Col lg={4} className="mt-3">
+            <Col lg={4} role="cell" className="mt-3">
               <a href="https://voolt3d.com.br/" target="_blank">
                 <img 
                   src="./images/quem-somos/logo4.png" 
