@@ -17,10 +17,6 @@ import '../styles/Clock.css';
 import '../styles/TimePicker.css';
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <html lang="pt">
-      <Component {...pageProps} />
-    </html>
-  )
+  return <Component {...pageProps} />
 }
 export default MyApp

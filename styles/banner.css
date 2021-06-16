@@ -3,7 +3,7 @@
     height: 100%;
 }
 
-.bannerAgendamento h2 {
+.bannerAgendamento h3 {
     color: #fff;
 }
 
@@ -38,7 +38,7 @@
       max-height: 55vh;
     }
   
-    .bannerAgendamento h2 {
+    .bannerAgendamento h3 {
       font-size: 1.5rem;
     }
   
@@ -59,7 +59,7 @@
         max-width: 80%;
     }
 
-    .bannerAgendamento h2 {
+    .bannerAgendamento h3 {
         font-size: 1rem;
     }
 

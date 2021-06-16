@@ -33,7 +33,7 @@ const Header = ({ neverStick }) => {
   return (
     <>
     <AccessibilityMenu />
-    <div className={`header${(sticky && !neverStick) ? ' sticky' : ''}`} role="navegation">
+    <div className={`header${(sticky && !neverStick) ? ' sticky' : ''}`} role="navigation">
       <Navbar light expand="md">
         <Container>
           <NavbarBrand href="/">
