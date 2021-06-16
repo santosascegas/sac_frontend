@@ -17,7 +17,7 @@ import Link from 'next/link'
 
 const Dashboard = ({ agendamentos, datas, error }) => {
 
-  const [datasD, setDatasD] = React.useState(datas);
+  const [datasD, setDatasD] = React.useState(datas || []);
 
   const [openAgendamento, setOpenAgendamento] = React.useState(false);
   const [openDatas, setOpenDatas] = React.useState(false);
@@ -62,7 +62,7 @@ const Dashboard = ({ agendamentos, datas, error }) => {
             ) :
               (
                 <UserTable 
-                  agendamentos={agendamentos}
+                  agendamentos={[]}
                 />
               )
             }
@@ -74,16 +74,16 @@ const Dashboard = ({ agendamentos, datas, error }) => {
   )
 }
 
-Dashboard.getInitialProps = async ctx => {
-  try {
-    const resAgendamento = await axios.get('http://0.0.0.0:8080/agendamento/');
-    const resDatas = await axios.get('http://0.0.0.0:8080/datas/status');
-    const agendamentos = resAgendamento.data || [];
-    const datas = resDatas.data || [];
-    return { agendamentos, datas };
-  } catch (error) {
-    return { error };
-  }
-};
+// Dashboard.getInitialProps = async ctx => {
+//   try {
+//     const resAgendamento = await axios.get('http://0.0.0.0:8080/agendamento/');
+//     const resDatas = await axios.get('http://0.0.0.0:8080/datas/status');
+//     const agendamentos = resAgendamento.data || [];
+//     const datas = resDatas.data || [];
+//     return { agendamentos, datas };
+//   } catch (error) {
+//     return { error };
+//   }
+// };
 
 export default Dashboard;

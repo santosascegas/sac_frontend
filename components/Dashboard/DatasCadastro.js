@@ -22,10 +22,10 @@ const DatasCadastro = ({ datas, setDatas }) => {
 
 
     try {
-      await axios.post('http://localhost:8080/datas', {
-        data: merged,
-        status: 0
-      });
+      // await axios.post('http://localhost:8080/datas', {
+      //   data: merged,
+      //   status: 0
+      // });
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +38,7 @@ const DatasCadastro = ({ datas, setDatas }) => {
     const newDatas = currentDatas.splice(idx - 1, 1);
 
     try {
-      await axios.delete(`http://localhost:8080/datas/${id}`);
+      // await axios.delete(`http://localhost:8080/datas/${id}`);
     } catch (error) {
       console.log(error);
     }

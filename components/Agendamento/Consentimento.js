@@ -47,8 +47,8 @@ const Consentimento = ({ data, userInfo, setError, setSuccess }) => {
 
 
     try {
-      await axios.post('http://localhost:8080/agendamento/', dados);
-      // await axios.delete(`http://localhost:8080/datas/${data.id}`);
+      // await axios.post('http://localhost:8080/agendamento/', dados);
+     
       setSuccess(true);
       } catch (error) {
       setError(error);

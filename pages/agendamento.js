@@ -32,7 +32,11 @@ const Agendamento = ({ datas }) => {
           ) }
 
           { !data && (
-            <DatePicker datas={datas} setData={setData} />
+            <DatePicker datas={[{
+              id: 1,
+              status: 0,
+              data: '26/06/2021&9:30'
+            }]} setData={setData} />
           ) }
 
           { data && !userInfo && (
@@ -62,15 +66,15 @@ const Agendamento = ({ datas }) => {
   )
 }
 
-Agendamento.getInitialProps = async ctx => {
-  try {
-    const res = await axios.get('http://0.0.0.0:8080/datas/status');
-    const datas = res.data;
-    return { datas };
-  } catch (error) {
-    return { error };
-  }
-};
+// Agendamento.getInitialProps = async ctx => {
+//   try {
+//     const res = await axios.get('http://0.0.0.0:8080/datas/status');
+//     const datas = res.data;
+//     return { datas };
+//   } catch (error) {
+//     return { error };
+//   }
+// };
 
 
 export default Agendamento;
