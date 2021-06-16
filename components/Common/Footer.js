@@ -11,7 +11,7 @@ const Footer = ({inicio}) => {
     <FooterHeader inicio={inicio} />
     <section className="footer section">
       <Container className="footerContainer">
-          <p><FaRegCopyright /> Santos às Cegas. Todos os Direitos Reservados para Santos às Cegas.</p>
+          <p><FaRegCopyright /> Santos às Cegas. Todos os Direitos Reservados.</p>
           <div>
             <a href="https://www.instagram.com/con_tacto3d/" title="Instagram" target="_blank" aria-label="Link para instagram">
               <FaInstagram color="#fff" size={35}/>

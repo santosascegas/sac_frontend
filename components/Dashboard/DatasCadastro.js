@@ -22,7 +22,7 @@ const DatasCadastro = ({ datas, setDatas }) => {
     const splitData = dataCalendario.split('-');
     const newData = splitData[2] + "/" + splitData[1] + "/" + splitData[0];
     const merged = newData + '&' + dataHorario;
-    const currentDatas = localDatas;
+    const currentDatas = datas;
 
     const data = {
       data: merged,

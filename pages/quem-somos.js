@@ -26,7 +26,7 @@ const Index = () => {
           <Row role="row">
             <Col lg={4}>
               <img 
-                src="./images/quem-somos/equipe1.jpg" 
+                src="./images/quem-somos/equipe1-v2.jpeg" 
                 alt="Membros do projeto 1: Imagem de 5 pessoas divididas em 5 quadrados sendo 3 acima e 2 abaixo. Na primeira linha são 2 homens e uma mulher e na segunda linha, um homem e uma mulher." 
                 className="img-fluid mx-auto d-block"
               />

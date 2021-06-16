@@ -26,7 +26,7 @@ const Hero = () => {
               </div>
 
               <Link href="/agendamento">
-                <a className="agendamentoButton">Agende seu trajeto</a>
+                <a className="agendamentoButton">Marque seu trajeto `{'>'}`</a>
               </Link>
             </Container>
           </Col>
