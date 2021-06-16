@@ -23,7 +23,7 @@ const Agendamento = ({ datas }) => {
 
   return (
     <Layout pageTitle="Santos as Cegas | Agendamento" inicio="agendamento" neverStick={true}>
-      <section className="agendamento" id="agendamento" role="agendamento">
+      <section className="agendamento" id="agendamento" role="form">
         <Container>
           <h2>Agendamento</h2>
 

@@ -14,7 +14,7 @@ const Index = () => {
 
   return (
     <Layout pageTitle="Santos as Cegas | Trajeto" inicio="trajeto" neverStick={true}>
-      <section className="trajeto" id="trajeto" role="trajeto">
+      <section className="trajeto" id="trajeto" role="list">
         <Container>
           <h2>Trajeto</h2>
 
