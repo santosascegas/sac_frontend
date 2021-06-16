@@ -13,13 +13,13 @@ const Footer = ({inicio}) => {
       <Container className="footerContainer">
           <p><FaRegCopyright /> Santos às Cegas. Todos os Direitos Reservados para Santos às Cegas.</p>
           <div>
-            <a href="https://www.instagram.com/con_tacto3d/" target="_blank">
+            <a href="https://www.instagram.com/con_tacto3d/" target="_blank" aria-label="Link para instagram">
               <FaInstagram color="#fff" size={35}/>
             </a>
-            <a href="https://wa.link/nzdtiv" target="_blank">
+            <a href="https://wa.link/nzdtiv" target="_blank" aria-label="Link para abrir conversa no whatsapp">
               <FaWhatsapp color="#fff" size={35}/>
             </a>
-            <a href="mailto:santosascegas@gmail.com">
+            <a href="mailto:santosascegas@gmail.com" aria-label="Link para enviar email">
               <FaEnvelope color="#fff" size={35}/>
             </a>
           </div>

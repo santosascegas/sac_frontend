@@ -18,7 +18,7 @@ const Hero = () => {
           </Col>
           <Col lg={7} className="bannerAgendamento">
             <Container className="px-5 pb-5 pt-4">
-              <h2>Realize seu agendamento e venha fazer parte dessa experiência.</h2>
+              <h3>Realize seu agendamento e venha fazer parte dessa experiência.</h3>
               <div className="insideBox">
                 <h4>Terças-feiras às 14h30</h4>
                 <h4>Quartas-feiras às 9h30</h4>
