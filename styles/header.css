@@ -41,13 +41,15 @@
             transform: translateY(0%);
   }
 
-  @media only screen and (max-width: 1400px) {
+  @media only screen and (max-width: 1200px) {
     .navbar-expand-md .navbar-nav .nav-link {
         font-size: 1.3rem;
+        padding-left: 0;
+        padding-right: 0;
     }
   }
 
-  @media only screen and (max-width: 900) {
+  @media only screen and (max-width: 900px) {
     .navbar-expand-md .navbar-nav .nav-link {
         font-size: 0.8rem;
     }
