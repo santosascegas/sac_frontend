@@ -61,7 +61,9 @@ const UserForm = ({ setUserInfo, setError }) => {
           </FormGroup>
         </Form>
 
-        <Button onClick={handleSubmit} disabled={!nome || !email || !documento} className="actionButton">
+        <Button onClick={handleSubmit} disabled={!nome || !email || !documento} className="actionButton" 
+              title="Botao Proximo"
+              aria-label="Botao Proximo para continuar com agendamento">
           Próximo
         </Button>
       </>

@@ -136,6 +136,8 @@ const Consentimento = ({ data, userInfo, setError, setSuccess, setLoading }) => 
             || (Object.keys(respostasObrigatorias).length != perguntasObrigatorias.length) || checkPerguntasObrigatorias.includes(true)} 
           className="actionButton"
           style={{ marginTop: '2rem' }}
+          title="Botao enviar consentimento"
+          aria-label="Botao para enviar formulario de consentimento"
         >
           Enviar
         </Button>

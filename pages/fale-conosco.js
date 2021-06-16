@@ -148,10 +148,10 @@ const Index = () => {
                   </FormGroup>
                 </Form>
 
-                <Button className="actionButton" onClick={handleSubmit}>
+                <Button className="actionButton" onClick={handleSubmit} aria-label="Botao enviar formulario fale conosco">
                   Enviar
                 </Button>
-                <Button className="actionButton" onClick={limpar}>
+                <Button className="actionButton" onClick={limpar} aria-label="Botao limpar formulario fale conosco">
                   Limpar
                 </Button>
               </>

@@ -16,7 +16,9 @@ const DatePicker = ({ datas, setData }) => (
 
                   return (
                     <Col key={key} lg={3} sm={6} xs={12}>
-                      <Button className="dateButton" onClick={() => {setData(dt)}}>
+                      <Button className="dateButton" onClick={() => {setData(dt)}} 
+                        title="Botao Escolha Uma Data"
+                        aria-label={`Dia: ${dia} e Horario: ${horario}`}>
                        <span>
                         <strong>
                             {dia}

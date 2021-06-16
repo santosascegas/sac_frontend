@@ -29,7 +29,7 @@ const AccessibilityMenu = () => {
                 border: '2px solid #0B0700',
                 backgroundColor: '#EAEEF3'
               }}
-              title="light theme"
+              title="Tema Claro"
               aria-label="Tema Claro"
             ></button>
             <button className="colorOption" id="black"
@@ -37,7 +37,7 @@ const AccessibilityMenu = () => {
                 border: '2px solid #EAEEF3',
                 backgroundColor: '#0B0700'
               }}
-              title="dark theme"
+              title="Tema Escuro"
               aria-label="Tema Escuro"
             ></button>
             <button className="colorOption" id="contrast"
@@ -45,7 +45,7 @@ const AccessibilityMenu = () => {
                 border: '2px solid #FFFF00',
                 backgroundColor: '#002673'
               }}
-              title="contrast theme"
+              title="Tema Contraste"
               aria-label="Tema Contraste"
             ></button>
           </Col>
