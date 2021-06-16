@@ -7,7 +7,7 @@ import FooterHeader from './FooterHeader';
 const Footer = ({inicio}) => {
   
   return (
-   <div className="footerDiv">
+   <div className="footerDiv" role="footer">
     <FooterHeader inicio={inicio} />
     <section className="footer section">
       <Container className="footerContainer">

@@ -51,7 +51,7 @@ const Sobre = () => {
   );
 
   return (
-    <section className="section" id="feature">
+    <section className="section" id="feature" role="sobre">
       <Container>
         <Row className="justify-content-center">
           <Col lg={8} md={8}>

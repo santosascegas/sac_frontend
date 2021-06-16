@@ -31,7 +31,7 @@ const Experiencias = () => {
   ]
   
   return (
-    <section className="section" id="service">
+    <section className="section" id="service" role="experiencias">
       <Container>
         <Row className="justify-content-center">
           <Col lg={6} md={8}>

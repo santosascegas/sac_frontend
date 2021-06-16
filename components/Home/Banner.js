@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Hero = () => {
   return (
-    <section className="section position-relative" id="bannerInicio">
+    <section className="section position-relative" id="bannerInicio" role="bannerAgendamento">
       <Container>
         <Row className="align-items-center bannerRow">
           <Col lg={5} className="bannerAgendamentoImagem">

@@ -13,7 +13,7 @@ import {
 const AccessibilityMenu = () => {
 
   return (
-    <div className='sticky accessibilityMenu'>
+    <div className='sticky accessibilityMenu' role="menu de accessibilidade">
       <Container>
         <Row className="controlsRow">
           <Col xs={6} md={6} style={{ textAlign: 'center' }}>
