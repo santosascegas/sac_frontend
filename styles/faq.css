@@ -13,7 +13,7 @@
     margin-top: 1.2rem;
 }
 
-.faq .duvidasRow #card {
+.faq .duvidasRow .cardCol {
     display: flex;
     justify-content: center;
 }

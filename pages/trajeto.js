@@ -14,8 +14,8 @@ const Index = () => {
 
   return (
     <Layout pageTitle="Santos as Cegas | Trajeto" inicio="trajeto" neverStick={true}>
-      <section className="trajeto" id="trajeto" role="list">
-        <Container role="group">
+      <section className="trajeto" id="trajeto">
+        <Container>
           <h2>Trajeto</h2>
 
             { trajetos.map((trajeto, idx) => (
