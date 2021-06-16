@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <Layout pageTitle="Santos as Cegas | Quem Somos" inicio="quemSomos" neverStick={true}>
       <section className="quemSomos" id="quemSomos" role="grid">
-        <Container>
+        <Container role="rowgroup">
           <h2>Quem Somos</h2>
 
           <div className="intro">
@@ -23,7 +23,7 @@ const Index = () => {
             <p>O projeto “Santos às cegas” tem a liderança de Renato Frosch e o apoio de um grupo de 15 pessoas e empresas que colaborativamente apoiam as ações.</p>
           </div>
 
-          <Row>
+          <Row role="row">
             <Col lg={4}>
               <img 
                 src="./images/quem-somos/equipe1.jpg" 
@@ -47,7 +47,7 @@ const Index = () => {
             </Col>
           </Row>
 
-          <Row className="logos">
+          <Row className="logos" role="row">
             <Col lg={4}>
               <a href="https://unisantos.br/" target="_blank">
                 <img 

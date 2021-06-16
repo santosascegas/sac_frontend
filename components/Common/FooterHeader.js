@@ -4,7 +4,7 @@ const FooterHeader = ({ inicio }) => {
 
   return (
     <div className="footerHeader">
-      <a href={`#${inicio}`} className="voltar" id="voltarAoInicio" role="complementary">Voltar ao início</a>
+      <a href={`#${inicio}`} className="voltar" id="voltarAoInicio" aria-label="Botao de voltar ao inicio da tela">Voltar ao início</a>
     </div>
   );
 }
