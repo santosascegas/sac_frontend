@@ -52,7 +52,7 @@ const Index = () => {
     setError(null);
     
     try {
-      await axios.post('http://localhost:8080/fale-conosco/', params);
+      // await axios.post('http://localhost:8080/fale-conosco/', params);
       setSuccess('Mensagem enviada com sucesso!');
       limpar();
       setLoading(false);
