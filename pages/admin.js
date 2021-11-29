@@ -34,7 +34,7 @@ const Admin = ({ isLogged }) => {
     setLoading(true);
 
     try {
-      const res = await axios.post(`${process.env.API_URL}/admin/login`, {
+      const res = await axios.post(`${process.env.API_URL}admin/login`, {
         login,
         senha
       });

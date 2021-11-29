@@ -108,10 +108,10 @@ export async function getServerSideProps(ctx) {
   const parts = cookies?.split('authorization=');
 
   try {
-    const resAgendamento = await axios.get(`${process.env.API_URL}/agendamento/`, {
+    const resAgendamento = await axios.get(`${process.env.API_URL}agendamento/`, {
       headers: ctx.req ? { Authorization: parts[1] } : undefined
     });
-    const resDatas = await axios.get(`${process.env.API_URL}/datas/status`);
+    const resDatas = await axios.get(`${process.env.API_URL}datas/status`);
     const agendamentos = resAgendamento.data;
     const datas = resDatas.data;
     return { props: { agendamentos, datas }  };

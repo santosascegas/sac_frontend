@@ -48,7 +48,7 @@ const Consentimento = ({ data, userInfo, setError, setSuccess, setLoading }) => 
 
 
     try {
-      await axios.post(`${process.env.API_URL}/agendamento/`, dados);
+      await axios.post(`${process.env.API_URL}agendamento/`, dados);
       setSuccess(true);
       setLoading(false);
       } catch (error) {

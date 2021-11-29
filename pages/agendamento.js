@@ -74,7 +74,7 @@ const Agendamento = ({ datas }) => {
 
 Agendamento.getInitialProps = async ctx => {
   try {
-    const res = await axios.get(`${process.env.API_URL}/datas/status`);
+    const res = await axios.get(`${process.env.API_URL}datas/status`);
     const datas = res.data;
     return { datas };
   } catch (error) {
