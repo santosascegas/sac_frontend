@@ -101,8 +101,8 @@ const Admin = ({ isLogged }) => {
 }
 
 export async function getServerSideProps(ctx) {
-  const cookies = ctx.req.headers.cookie;
-  const isLogged = cookies.includes('authorization')
+  const cookies = ctx?.req?.headers?.cookie;
+  const isLogged = cookies?.includes('authorization')
 
   return { props: { isLogged } };
 };
