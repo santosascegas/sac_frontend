@@ -52,7 +52,7 @@ const Index = () => {
     setError(null);
     
     try {
-      await axios.post(`${process.env.API_URL}fale-conosco/`, params);
+      await axios.post('https://sac-backend-v1.herokuapp.com/fale-conosco/', params);
       setSuccess('Mensagem enviada com sucesso!');
       limpar();
       setLoading(false);

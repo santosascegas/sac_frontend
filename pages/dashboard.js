@@ -108,10 +108,10 @@ export async function getServerSideProps(ctx) {
   const parts = cookies?.split('authorization=');
 
   try {
-    const resAgendamento = await axios.get(`${process.env.API_URL}agendamento/`, {
+    const resAgendamento = await axios.get('https://sac-backend-v1.herokuapp.com/agendamento/', {
       headers: ctx.req ? { Authorization: parts[1] } : undefined
     });
-    const resDatas = await axios.get(`${process.env.API_URL}datas/status`);
+    const resDatas = await axios.get('https://sac-backend-v1.herokuapp.com/datas/status');
     const agendamentos = resAgendamento.data;
     const datas = resDatas.data;
     return { props: { agendamentos, datas }  };
