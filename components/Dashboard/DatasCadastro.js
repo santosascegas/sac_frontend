@@ -30,7 +30,7 @@ const DatasCadastro = ({ datas, setDatas }) => {
     };
 
     try {
-      // const res = await axios.post('http://localhost:8080/datas', data, config);
+      const res = await axios.post(`${process.env.API_URL}/datas`, data, config);
       currentDatas.push(res.data)
     } catch (error) {
       console.log(error);
@@ -50,7 +50,7 @@ const DatasCadastro = ({ datas, setDatas }) => {
     currentDatas.splice(deleteDataInfo.idx, 1);
 
     try {
-      // await axios.delete(`http://localhost:8080/datas/${deleteDataInfo.id}`, config);
+      await axios.delete(`${process.env.API_URL}/datas/${deleteDataInfo.id}`, config);
     } catch (error) {
       console.log(error);
     }

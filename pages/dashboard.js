@@ -29,7 +29,7 @@ const Dashboard = ({ agendamentos, datas, error }) => {
   const handleLogout = (e) => {
     e.preventDefault();
 
-    // delete_cookie('authorization')
+    delete_cookie('authorization')
     router.push('/admin');
   }
 
@@ -94,26 +94,26 @@ const Dashboard = ({ agendamentos, datas, error }) => {
 }
 
 export async function getServerSideProps(ctx) {
-  // const cookies = ctx.req?.headers.cookie;
+  const cookies = ctx.req?.headers.cookie;
 
-  // if (!cookies.includes('authorization')) 
-  //   return {
-  //     redirect: {
-  //       permanent: false,
-  //       destination: "/admin",
-  //     },
-  //     props: {},
-  //   };
+  if (!cookies.includes('authorization')) 
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/admin",
+      },
+      props: {},
+    };
   
-  // const parts = cookies?.split('authorization=');
+  const parts = cookies?.split('authorization=');
 
   try {
-    // const resAgendamento = await axios.get('http://0.0.0.0:8080/agendamento/', {
-    //   headers: ctx.req ? { Authorization: parts[1] } : undefined
-    // });
-    // const resDatas = await axios.get('http://0.0.0.0:8080/datas/status');
-    // const agendamentos = resAgendamento.data;
-    // const datas = resDatas.data;
+    const resAgendamento = await axios.get(`${process.env.API_URL}/agendamento/`, {
+      headers: ctx.req ? { Authorization: parts[1] } : undefined
+    });
+    const resDatas = await axios.get(`${process.env.API_URL}/datas/status`);
+    const agendamentos = resAgendamento.data;
+    const datas = resDatas.data;
     const agendamentos = [];
     const datas = [];
     return { props: { agendamentos, datas }  };
