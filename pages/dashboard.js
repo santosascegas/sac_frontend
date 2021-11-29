@@ -114,8 +114,6 @@ export async function getServerSideProps(ctx) {
     const resDatas = await axios.get(`${process.env.API_URL}/datas/status`);
     const agendamentos = resAgendamento.data;
     const datas = resDatas.data;
-    const agendamentos = [];
-    const datas = [];
     return { props: { agendamentos, datas }  };
   } catch (error) {
     return { props: { error } };
