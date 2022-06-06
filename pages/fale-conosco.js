@@ -34,32 +34,28 @@ const Index = () => {
 
     const regexTelefone = new RegExp('^\\([0-9]{2}\\)((3[0-9]{3}-[0-9]{4})|(9[0-9]{3}-[0-9]{5}))$');
 
-    if (regexTelefone.test(params.telefone)) {
+    if (regexTelefone.test(params.phone)) {
       setError('Número de telefone inválido. Por favor, preencha com dados válidos');
       return;
     }
 
-    if (!params.assunto) {
+    if (!params.subject) {
       setError('Um assunto é necessário');
       return;
     }
 
-    if (!params.mensagem) {
+    if (!params.message) {
       setError('Uma mensagem é necessária');
       return;
     }
 
     setError(null);
     
-    try {
-      await axios.post('https://sac-backend-v1.herokuapp.com/fale-conosco/', params);
-      setSuccess('Mensagem enviada com sucesso!');
-      limpar();
-      setLoading(false);
-    } catch (error) {
-      setError(error);
-      setLoading(false);
-    }
+    await axios.post('http://localhost:8080/fale-conosco/', params);
+    setSuccess('Mensagem enviada com sucesso!');
+    limpar();
+    setLoading(false);
+
 
   }
 
@@ -105,10 +101,10 @@ const Index = () => {
 
                 <Form className="userForm">
                   <FormGroup className="required">
-                    <Label for="nome">Nome</Label>
-                    <Input type="text" name="nome" id="nome" value={params.nome || ''}
+                    <Label for="name">Nome</Label>
+                    <Input type="text" name="name" id="name" value={params.name || ''}
                       onChange={(e) => {
-                        setParams({...params, nome: e.target.value})
+                        setParams({...params, name: e.target.value})
                       }}
                     />
                   </FormGroup>
@@ -121,28 +117,28 @@ const Index = () => {
                     />
                   </FormGroup>
                   <FormGroup className="required">
-                    <Label for="telefone">Telefone</Label>
-                    <InputMask mask="(99) 99999-9999" value={params.telefone || ''}
+                    <Label for="phone">Telefone</Label>
+                    <InputMask mask="(99) 99999-9999" value={params.phone || ''}
                       onChange={(e) => {
-                        setParams({...params, telefone: e.target.value})
+                        setParams({...params, phone: e.target.value})
                       }}
                     >
-                      {(inputProps) => <Input {...inputProps} name="telefone" id="telefone" />}
+                      {(inputProps) => <Input {...inputProps} name="phone" id="telefone" />}
                     </InputMask>
                   </FormGroup>
                   <FormGroup className="required">
-                    <Label for="assunto">Assunto</Label>
-                    <Input type="text" name="assunto" id="assunto" value={params.assunto || ''} 
+                    <Label for="subject">Assunto</Label>
+                    <Input type="text" name="subject" id="subject" value={params.subject || ''} 
                       onChange={(e) => {
-                        setParams({...params, assunto: e.target.value})
+                        setParams({...params, subject: e.target.value})
                       }}
                     />
                   </FormGroup>
                   <FormGroup className="required">
-                    <Label for="mensagem">Mensagem</Label>
-                    <Input type="textarea" name="text" id="mensagem" value={params.mensagem || ''}
+                    <Label for="message">Mensagem</Label>
+                    <Input type="textarea" name="message" id="message" value={params.message || ''}
                       onChange={(e) => {
-                        setParams({...params, mensagem: e.target.value})
+                        setParams({...params, message: e.target.value})
                       }}
                     />
                   </FormGroup>
