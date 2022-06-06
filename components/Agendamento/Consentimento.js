@@ -38,22 +38,22 @@ const Consentimento = ({ data, userInfo, setError, setSuccess, setLoading }) => 
     const precisaAtesteado = checkAtestado()
 
     const dados = {
-      nomeUsuario: userInfo.nome,
-      emailUsuario: userInfo.email,
-      documento: userInfo.documento,
-      telefone: userInfo.telefone,
-      data: { ...data },
-      atestado: precisaAtesteado >= 1 ? 1 : 0
+      name: userInfo.nome,
+      email: userInfo.email,
+      idDocument: userInfo.documento,
+      phone: userInfo.telefone,
+      agenda: { ...data },
+      doctorsNote: precisaAtesteado >= 1 ? 1 : 0
     }
 
-
     try {
-      await axios.post('https://sac-backend-v1.herokuapp.com/agendamento/', dados);
+      await axios.post('http://localhost:8080/agendamento/', dados);
+      console.log(dados)
       setSuccess(true);
-      setLoading(false);
+      setLoading(false)
       } catch (error) {
-      setError(error);
-      setLoading(false);
+        console.error(error)
+        setLoading(false)
     }
   }
 
