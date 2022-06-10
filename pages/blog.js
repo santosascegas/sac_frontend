@@ -14,7 +14,7 @@ import {
 
 const Blog = ({ posts }) => {
 
-  const [post, setPosts] = React.useState(null);
+  const [post, setPost] = React.useState(null);
 
   const [success, setSuccess] = React.useState(false);
   const [error, setError] = React.useState(null);
@@ -31,7 +31,7 @@ const Blog = ({ posts }) => {
           ) }
 
           { !post && (
-            <PostPicker posts={post} setPosts={setPosts} />
+            <PostPicker posts={posts} setPost={setPost} />
           ) }
 
         </Container>
@@ -40,13 +40,13 @@ const Blog = ({ posts }) => {
   )
 }
 
-Blog.getInitialProps = async ctx => { //create new context
+Blog.getInitialProps = async ctx => {
   try {
-    const res = await axios.get('localhost:8080/post/');
-    const posts = res;
-    return {posts};
+    const res = await axios.get('http://localhost:8080/post/');
+    const posts = res.data;
+    return { posts };
   } catch (error) {
-    return {error};
+    return { error };
   }
 };
 
