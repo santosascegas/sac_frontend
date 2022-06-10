@@ -24,8 +24,7 @@ const PostPicker = ({ posts, setPost}) => (
               {
                 posts.map( (post, key) => {
                   let data = turnDateReadable(post.created_at);
-                  let imagem = ".\\"+post.image.path;
-                  let teste = `http://localhost:8080/files/get/${post.image.id}`
+                  let imagem = `http://localhost:8080/files/get/${post.image.id}`
                     return (
                       
                       <Col key={key} lg={3} sm={6} xs={12}>
@@ -44,7 +43,7 @@ const PostPicker = ({ posts, setPost}) => (
                               <img src="">
                               </img>
                               <CardImg
-                                src={teste}
+                                src={imagem}
                                 top
                                 width="100%"
                               />
