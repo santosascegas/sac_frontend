@@ -74,7 +74,7 @@ const Agendamento = ({ datas }) => {
 
 Agendamento.getInitialProps = async ctx => {
   try {
-    const res = await axios.get('https://sac-backend-v1.herokuapp.com/datas/status');
+    const res = await axios.get('http://localhost:8080/agenda/status');
     const datas = res.data;
     return { datas };
   } catch (error) {

@@ -90,6 +90,13 @@ const Header = ({ neverStick }) => {
                   </a>
                 </Link>
               </NavItem>
+              <NavItem>
+                <Link href="/blog">
+                  <a className="nav-link">
+                    Avaliações
+                  </a>
+                </Link>
+              </NavItem>
             </Nav>
           </Collapse>
         </Container>

@@ -1,0 +1,80 @@
+.experiencias_container{
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (max-width: 1304px) {
+  .experiencias_container {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 875px) {
+  .experiencias_container {
+    max-width: 430px;
+  }
+}
+
+.experiencia_card {
+  display: flex;
+  width: 430px;
+  height: 430px;
+  max-width: 430px;
+  max-height: 430px;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.experiencia_card .red_border {
+  position: relative;
+  width: calc(100% - 3rem - 3px);
+  height: calc(100% - 3rem - 3px);
+  border: solid 4px #E20B13;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.experiencia_card .red_border .content {
+  width: 80%;
+  height: 40%;
+  font-size: 1.1rem;
+}
+
+.experiencia_card .red_border .quotes_mark {
+  position: absolute;
+  z-index: 10;
+  left: -1rem;
+  top: -1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background-color: white;
+}
+
+.experiencia_card .red_border .logo {
+  position: absolute;
+  z-index: 10;
+  right: -1rem;
+  bottom: -1rem;
+  display: block;
+  width: 140px;
+  height: 140px;
+  background-color: white;
+}
+
+.experiencia_card .red_border .logo img {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  top: 1rem;
+  left: 1rem;
+  user-select: none;
+}
