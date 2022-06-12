@@ -1,8 +1,10 @@
-import React from 'react';
-import { Table } from "reactstrap";
+import React from 'react'
+import { Table } from "reactstrap"
+
+import { convertDateToObject } from '../../helpers/convertDateToObject'
 
 const UserTable = ({ agendamentos }) => {
-  
+
   return (
     <Table>
     <thead>
@@ -17,22 +19,23 @@ const UserTable = ({ agendamentos }) => {
     </thead>
     <tbody>
       {
-        agendamentos.map((a, key) => {
-          const split = a.data?.data.split('&');
+        agendamentos.map((data, key) => {
+          const date_obj = convertDateToObject(data.agenda.date)
           return (
             <tr key={key}>
-              <th scope="row">{split[0]} - {split[1]}</th>
-              <td>{a.nomeUsuario}</td>
-              <td>{a.emailUsuario}</td>
-              <td>{a.documento}</td>
-              <td>{a.telefone}</td>
-              <td>{a.atestado == 1 ? 'Sim' : 'Não'}</td>
+              <th scope="row">{date_obj.date} - {date_obj.time}</th>
+              <td>{data.name}</td>
+              <td>{data.email}</td>
+              <td>{data.idDocument}</td>
+              <td>{data.phone}</td>
+              <td>{data.doctorsNote == 1 ? 'Sim' : 'Não'}</td>
             </tr>
           )
         })
       }
     </tbody>
   </Table>
-  );
+  )
 }
-export default UserTable;
+
+export default UserTable

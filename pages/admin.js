@@ -2,8 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router'
 
-import { set_cookie } from '../helpers/cookies';
-
 import Layout from "../components/Common/Layout";
 
 import { 
@@ -15,8 +13,10 @@ import {
   Button,
   Spinner
 } from "reactstrap";
+import Cookies from 'universal-cookie';
 
 const Admin = ({ isLogged }) => {
+  const cookies = new Cookies()
   const router = useRouter();
 
   const [login, setLogin] = React.useState(null);
@@ -34,15 +34,15 @@ const Admin = ({ isLogged }) => {
     setLoading(true);
 
     try {
-      const res = await axios.post('https://sac-backend-v1.herokuapp.com/admin/login', {
-        login,
-        senha
-      });
+      const params = new URLSearchParams();
+      params.append('username', login)
+      params.append('password', senha)
+      const res = await axios.post('http://localhost:8080/api/login', params)
 
-      const auth = res.headers.authentication;
-      set_cookie('authorization', auth);
+      cookies.set("access_token", res.data["access_token"], {sameSite: 'None'})
+      cookies.set("refresh_token", res.data["refresh_token"], {sameSite: 'None'})
 
-      router.push('/dashboard');
+      router.push('/dashboard')
       setLoading(false);
       } catch (error) {
       console.log(error);
@@ -62,7 +62,7 @@ const Admin = ({ isLogged }) => {
             className="d-inline-block align-top"
           />
 
-          { error && (
+{ error && (
             <p style={{ color: 'red' }}>{error}</p>
           ) }
 
@@ -102,10 +102,14 @@ const Admin = ({ isLogged }) => {
 
 export async function getServerSideProps(ctx) {
   const cookies = ctx?.req?.headers?.cookie;
-  const isLogged = cookies?.includes('authorization')
+  let isLogged
+  if (cookies?.includes('refresh_token') || cookies?.includes('access_token')) {
+    isLogged = true
+  } else {
+    isLogged = false
+  }
 
   return { props: { isLogged } };
 };
-
 
 export default Admin;

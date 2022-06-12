@@ -12,6 +12,9 @@ import '../styles/faq.css';
 import '../styles/trajeto.css';
 import '../styles/quem-somos.css';
 import '../styles/fale-conosco.css';
+import '../styles/sacmodal.css';
+import '../styles/experiencias.css';
+import '../styles/blog.css';
 
 import '../styles/Clock.css';
 import '../styles/TimePicker.css';

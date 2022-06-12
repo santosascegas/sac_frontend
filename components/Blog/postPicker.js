@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Row, Col, Button } from "reactstrap";
+import React from 'react'
+import { Container, Row, Col, Button } from "reactstrap"
 import {
   Card,
   CardGroup,
@@ -8,63 +8,54 @@ import {
   CardTitle,
   CardSubtitle,
   CardImg
-} from "reactstrap";
+} from "reactstrap"
 
-const turnDateReadable = (data) => {
-  data = new Date().toISOString().slice(0, 19).replace('T', ' ');
-  return data;
-}
+import { convertDateToObject } from '../../helpers/convertDateToObject'
 
 const PostPicker = ({ posts, setPost}) => (
+  <>
+  {
+    posts.length > 0 ? (
       <>
-        {
-          posts.length > 0 ? (
-            <>
-              <Row className="dateRow">
-              {
-                posts.map( (post, key) => {
-                  let data = turnDateReadable(post.created_at);
-                  let imagem = `http://localhost:8080/files/get/${post.image.id}`
-                    return (
-                      
-                      <Col key={key} lg={3} sm={6} xs={12}>
-                        <Container>
-                        <CardGroup>
-                          <Card>
-                            <CardBody>
-                              <CardTitle tag="h5">
-                                {post.name}
-                              </CardTitle>
-                              <CardSubtitle className="mb-2 text-muted" tag="h6">
-                                <em>
-                                  {data};
-                                </em>
-                              </CardSubtitle>
-                              <img src="">
-                              </img>
-                              <CardImg
-                                src={imagem}
-                                top
-                                width="100%"
-                              />
-                              <CardText>
-                                {post.message}
-                              </CardText>
-                            </CardBody>
-                          </Card>
-                        </CardGroup>
-                        </Container>
-                      </Col>
-                  )
-                } )
-              }
+      {
+        posts.map( (post, key) => {
+          let data = convertDateToObject(post.created_at)
+          let imagem = `http://localhost:8080/files/get/${post.image.id}`
+          return (
+              <Row>
+                <CardGroup>
+                  <Card className='post_card'>
+                    <CardBody>
+                      <CardTitle tag="h5">
+                        {post.name}
+                      </CardTitle>
+                      <CardSubtitle className="mb-2 text-muted" tag="h6">
+                        <em> Postado em:</em> {data.date}
+                      </CardSubtitle>
+                      <img src="">
+                      </img>
+                      <CardImg
+                        src={imagem}
+                        top
+                        width="100%"
+                      />
+                      <CardText>
+                        {post.message}
+                      </CardText>
+                    </CardBody>
+                  </Card>
+                </CardGroup>
               </Row>
-            </>
-          ) :
-          <h3>Nenhum post disponível.</h3>
+            )
+          } )
         }
       </>
-);
-  
-export default PostPicker;
-
+      ) :
+      <h3>Nenhum post disponível.</h3>
+  }
+  </>
+)
+      
+export default PostPicker
+      
+      
