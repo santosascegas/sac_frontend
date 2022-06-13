@@ -67,3 +67,29 @@
     height: 70px;
     background-color: white;
 }
+
+ul.sac_questoes {
+    margin-top: 1rem;
+    background-color: rgba(0,0,0,.05);
+    padding: 1rem;
+    border-radius: 3px;
+    list-style: none;
+}
+
+ul.sac_questoes li {
+    margin-left: 1rem;
+}
+
+ul.sac_questoes li:before {
+    content: ">"
+}
+
+.sac_questao {
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+.sac_questao_resposta {
+    display: block;
+    margin-left: 2.6rem;
+}

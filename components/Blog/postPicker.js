@@ -44,6 +44,18 @@ const PostPicker = ({ posts, setPost}) => (
                             width="100%"
                           /> : null
                       }
+                      <div>
+                        <ul className='sac_questoes'>
+                          <li>
+                            <span className="sac_questao" aria-label='Você recomendaria o trajeto para outras pessoas?'>Você recomendaria o trajeto para outras pessoas?</span>
+                            <span className="sac_questao_resposta" aria-label='Resposta: '>{(post.question_1) ? "Sim" : "Não"}</span>
+                          </li>
+                          <li>
+                            <span className="sac_questao" aria-label='Questão 2?'>Questão 2?</span>
+                            <span className="sac_questao_resposta" aria-label='Resposta: '>{(post.question_2) ? "Sim" : "Não"}</span>
+                          </li>
+                        </ul>
+                      </div>
                       {
                         (post.audio.fileName !== null) ?
                           <audio src={audio_url} controls /> : null
