@@ -38,7 +38,7 @@
 
 .sac_cardtitle {
     margin-left: 40px;
-    margin-top: calc(1rem / 2 + 3px) ;
+    margin-top: calc(1rem / 2) ;
 }
 
 .sac_cardsubtitle {
@@ -51,8 +51,8 @@
 
 .sac_cardtext {
     font-size: 1.125em;
-    letter-spacing: 0.00625rem;
-    line-height: 1.465em;
+    letter-spacing: .00625rem;
+    line-height: 1.875em;
 }
 
 .sac_cardgroup .quotes{

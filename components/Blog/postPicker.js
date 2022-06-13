@@ -33,7 +33,7 @@ const PostPicker = ({ posts, setPost}) => (
                         {post.name}
                       </CardTitle>
                       <CardSubtitle className="sac_cardsubtitle mb-2 text-muted" tag="h6">
-                        <em> Postado em:</em> {data.date}
+                        Em {data.date}
                       </CardSubtitle>
                       {
                         (post.image.fileName !== null) ?
@@ -44,9 +44,17 @@ const PostPicker = ({ posts, setPost}) => (
                             width="100%"
                           /> : null
                       }
-                      <CardText className='sac_cardtext'>
-                        {post.message}
-                      </CardText>
+                      {
+                        (post.audio.fileName !== null) ?
+                          <audio src={audio_url} controls /> : null
+                      }
+                      {
+                        (post.text !== null) ?
+                          <CardText className='sac_cardtext'>
+                            {post.message}
+                          </CardText>
+                        : null
+                      }
                     </CardBody>
                   </Card>
                 </CardGroup>
