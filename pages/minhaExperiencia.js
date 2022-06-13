@@ -2,6 +2,8 @@ import React from 'react'
 
 import Layout from "../components/Common/Layout"
 
+
+
 import { 
   Container, 
   Row, 
@@ -35,7 +37,8 @@ const Index = () => {
   const [loading, setLoading] = React.useState(false)
   const [audioData, setAudioData] = useState(null)
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     setLoading(true)
 
     const regexTelefone = new RegExp('^\\([0-9]{2}\\)((3[0-9]{3}-[0-9]{4})|(9[0-9]{3}-[0-9]{5}))$')
@@ -82,7 +85,7 @@ const Index = () => {
     formData.append('message', params.message)
     formData.append('question_1', params.question_1)
     formData.append('question_2', params.question_2)
-    
+
     await axios.post('http://localhost:8080/post/', formData, config)
     setSuccess('Avaliação enviada com sucesso!')
     limpar()
@@ -188,7 +191,7 @@ const Index = () => {
                     />
                   </FormGroup>
                   <FormGroup style={ {marginBottom: "10px"} }>
-                    <Label for="image">Imagem</Label>
+                    <Label style={{display: "block"}} for="image">Foto</Label>
                     <Input type="file" name="image" id="image"
                       onChange={(e) => {
                         setParams({...params, image: e.target.files[0]})
@@ -197,14 +200,16 @@ const Index = () => {
                     />
                   </FormGroup>
                   <FormGroup style={ {marginBottom: "10px"} }>
+                    <Label style={{display: "block"}} for="audio">Audio</Label>
+                    <span>Se quiser pode também gravar um audio!</span>
                     <RecordMic audio={audioData} setAudio={setAudioData} />
                   </FormGroup>
                 </Form>
 
-                <Button className="actionButton" onClick={handleSubmit} aria-label="Botao enviar formulario avaliação">
+                <Button className="actionButton sacbtn" onClick={(e) => handleSubmit(e)} aria-label="Enviar formulário de avaliação">
                   Enviar
                 </Button>
-                <Button className="actionButton" onClick={limpar} aria-label="Botao limpar formulario avaliação">
+                <Button className="actionButton sacbtn" onClick={limpar} aria-label="Botao limpar formulario avaliação">
                   Limpar
                 </Button>
               </>

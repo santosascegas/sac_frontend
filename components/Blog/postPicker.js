@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Row, Col, Button } from "reactstrap"
+import { GoQuote } from 'react-icons/go'
 import {
   Card,
   CardGroup,
@@ -18,28 +19,32 @@ const PostPicker = ({ posts, setPost}) => (
     posts.length > 0 ? (
       <>
       {
-        posts.map( (post, key) => {
+        posts.reverse().map( (post, key) => {
           let data = convertDateToObject(post.created_at)
-          let imagem = `http://localhost:8080/files/get/${post.image.id}`
+          let image_url = `http://localhost:8080/files/get/${post.image.id}`
+          let audio_url = `http://localhost:8080/files/get/${post.audio.id}`
           return (
-              <Row>
-                <CardGroup>
+              <Row key={key}>
+                <CardGroup className='sac_cardgroup'>
+                  <div className="quotes"><GoQuote size={24}/></div>
                   <Card className='post_card'>
-                    <CardBody>
-                      <CardTitle tag="h5">
+                    <CardBody className='sac_cardbody'>
+                      <CardTitle className='sac_cardtitle' tag="h5">
                         {post.name}
                       </CardTitle>
-                      <CardSubtitle className="mb-2 text-muted" tag="h6">
+                      <CardSubtitle className="sac_cardsubtitle mb-2 text-muted" tag="h6">
                         <em> Postado em:</em> {data.date}
                       </CardSubtitle>
-                      <img src="">
-                      </img>
-                      <CardImg
-                        src={imagem}
-                        top
-                        width="100%"
-                      />
-                      <CardText>
+                      {
+                        (post.image.fileName !== null) ?
+                          <CardImg
+                            className='sac_cardimg'
+                            src={image_url}
+                            top
+                            width="100%"
+                          /> : null
+                      }
+                      <CardText className='sac_cardtext'>
                         {post.message}
                       </CardText>
                     </CardBody>
