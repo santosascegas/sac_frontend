@@ -30,46 +30,50 @@ const Post = ({posts, setPosts}) => {
         </div>
       )
 
-    return (
-        <>
-        <Table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Criado em</th>
-                    <th>Visibilidade</th>
-                    <th>Questão 1</th>
-                    <th>Questão 2</th>
-                    <th>Alterar</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    Object.keys(posts).map( (_, key) => {
-                        return (
-                            <tr key={key}>
-                                <td>{posts[key].name}</td>
-                                <td>{posts[key].phone}</td>
-                                <td>{posts[key].created_at}</td>
-                                <td>{posts[key].isPublic ? 'Sim' : 'Não'}</td>
-                                <td>{posts[key].question_1 ? 'Sim' : 'Não'}</td>
-                                <td>{posts[key].question_2 ? 'Sim' : 'Não'}</td>
-                                <td>
-                                    <Button onClick={ () => {
-                                        setActivePost(posts[key]),
-                                        setShowModal(true)
-                                    } }>Alterar</Button>
-                                </td>
-                            </tr>
-                        )
-                    } )
-                }
-            </tbody>
-        </Table>
-        { showModal ? <BSModal post={activePost} /> : null }
-        </>
-    )
+    if (posts.length > 0) {
+        return (
+            <>
+            <Table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Criado em</th>
+                        <th>Visibilidade</th>
+                        <th>Questão 1</th>
+                        <th>Questão 2</th>
+                        <th>Alterar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        Object.keys(posts).map( (_, key) => {
+                            return (
+                                <tr key={key}>
+                                    <td>{posts[key].name}</td>
+                                    <td>{posts[key].phone}</td>
+                                    <td>{posts[key].created_at}</td>
+                                    <td>{posts[key].isPublic ? 'Sim' : 'Não'}</td>
+                                    <td>{posts[key].question_1 ? 'Sim' : 'Não'}</td>
+                                    <td>{posts[key].question_2 ? 'Sim' : 'Não'}</td>
+                                    <td>
+                                        <Button onClick={ () => {
+                                            setActivePost(posts[key]),
+                                            setShowModal(true)
+                                        } }>Alterar</Button>
+                                    </td>
+                                </tr>
+                            )
+                        } )
+                    }
+                </tbody>
+            </Table>
+            { showModal ? <BSModal post={activePost} /> : null }
+            </>
+        )
+    }else {
+        return (<><span>Não há postagens</span></>)
+    }
 }
 
 export default Post

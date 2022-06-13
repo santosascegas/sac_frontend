@@ -47,46 +47,49 @@ const DatasCadastro = ({ datas, setDatas }) => {
 
   return (
     <Container style={{ marginBottom: 15 }}>
-      <Row>
-        <Col lg={4}>
-          {
-            Object.keys(datas).map( (_, key) => {
-              const date_obj = convertDateToObject(datas[key].date)
-              return (
-                <Row key={key}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <p>{date_obj.date} - {date_obj.time}</p>
-                    <Button className="deleteData" onClick={ () => {handleDelete(datas[key].id, key)} }>
-                      <FaTrash size={18} />
-                    </Button>
-                  </div>
-                </Row>
-              )
-            })
-          }
-        </Col>
+    <Row>
+      <Col lg={4}>
+        {
+          (datas.length > 0) ?
+          Object.keys(datas).map( (_, key) => {
+            const date_obj = convertDateToObject(datas[key].date)
+            return (
+              <Row key={key}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <p>{date_obj.date} - {date_obj.time}</p>
+                  <Button className="deleteData" onClick={ () => {handleDelete(datas[key].id, key)} }>
+                    <FaTrash size={18} />
+                  </Button>
+                </div>
+              </Row>
+            )
+          })
+          :
+          <span>Não há datas cadastradas!</span>
+        }
+      </Col>
 
-        <Col lg={8}>
-          <Row>
-            <Col lg={7}>
-              <FormGroup>
-              <DatePicker selected={dataCalendario} onChange={(date) => setDataCalendario(date)} locale="pt-BR" />
-              </FormGroup>
-            </Col>
-            <Col lg={5}>
-              <TimePicker 
-                value={dataHorario}
-                onChange={setDataHorario}
-              />
-            </Col>
+      <Col lg={8}>
+        <Row>
+          <Col lg={7}>
+            <FormGroup>
+            <DatePicker selected={dataCalendario} onChange={(date) => setDataCalendario(date)} locale="pt-BR" />
+            </FormGroup>
+          </Col>
+          <Col lg={5}>
+            <TimePicker 
+              value={dataHorario}
+              onChange={setDataHorario}
+            />
+          </Col>
 
-            <Button style={{ width: '30%', marginLeft: '0.8rem', marginTop: '1rem' }} onClick={handleSubmit}>
-              Adicionar nova data
-            </Button>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
+          <Button style={{ width: '30%', marginLeft: '0.8rem', marginTop: '1rem' }} onClick={handleSubmit}>
+            Adicionar nova data
+          </Button>
+        </Row>
+      </Col>
+    </Row>
+  </Container>
   )
 }
 export default DatasCadastro

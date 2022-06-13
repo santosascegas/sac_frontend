@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useRouter } from 'next/router'
 
 import Layout from "../components/Common/Layout"
 import UserTable from "../components/Dashboard/UserTable"
@@ -21,12 +20,11 @@ import {
 } from "reactstrap"
 
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 
 const Dashboard = ({ datas, agendamentos, posts, error }) => {
-
   const router = useRouter()
-
   const cookies = new Cookies()
 
   const [datasD, setDatasD] = useState(datas || [])
@@ -129,7 +127,18 @@ const Dashboard = ({ datas, agendamentos, posts, error }) => {
 }
 
 export const getServerSideProps = async ctx => {
+  const cook = ctx?.req?.headers?.cookie
   const cookies = new Cookies(ctx.req.headers.cookie)
+
+  if (cook?.includes('access_token') === false) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/admin"
+      }
+    }
+  }
+
   let tokens
 
   await fetch('http://localhost:8080/api/token/refresh', {

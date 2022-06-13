@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router'
 
@@ -19,6 +19,9 @@ const Admin = ({ isLogged }) => {
   const cookies = new Cookies()
   const router = useRouter();
 
+  const usernameRef = useRef(null)
+  const passwordRef = useRef(null)
+
   const [login, setLogin] = React.useState(null);
   const [senha, setSenha] = React.useState(null);
 
@@ -32,6 +35,10 @@ const Admin = ({ isLogged }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    setInterval( () => {}, 500)
+
+    console.log(login, senha)
 
     try {
       const params = new URLSearchParams();
@@ -79,11 +86,11 @@ const Admin = ({ isLogged }) => {
                 <Form className="userForm">
                   <FormGroup>
                     <Label for="login">Login</Label>
-                    <Input type="text" name="login" id="login" onChange={(e) => {setLogin(e.target.value)}}/>
+                    <Input type="text" name="login" id="login" ref={usernameRef} onChange={(e) => {setLogin(e.target.value)}}/>
                   </FormGroup>
                   <FormGroup>
                     <Label for="senha">Senha</Label>
-                    <Input type="password" name="senha" id="senha" onChange={(e) => {setSenha(e.target.value)}}/>
+                    <Input type="password" name="senha" id="senha" ref={passwordRef} onChange={(e) => {setSenha(e.target.value)}}/>
                   </FormGroup>
                 </Form>
 
@@ -101,9 +108,9 @@ const Admin = ({ isLogged }) => {
 }
 
 export async function getServerSideProps(ctx) {
-  const cookies = ctx?.req?.headers?.cookie;
+  const cookies = new Cookies(ctx.req.headers.cookie)
   let isLogged
-  if (cookies?.includes('refresh_token') || cookies?.includes('access_token')) {
+  if (cookies.get('refresh_token') || cookies.get('access_token')) {
     isLogged = true
   } else {
     isLogged = false
