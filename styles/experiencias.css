@@ -41,9 +41,12 @@
 }
 
 .experiencia_card .red_border .content {
+  margin-top: -1.5rem;
   width: 80%;
   height: 40%;
   font-size: 1.1rem;
+  overflow: inherit;
+  overflow-wrap: break-word;
 }
 
 .experiencia_card .red_border .quotes_mark {
@@ -77,4 +80,10 @@
   top: 1rem;
   left: 1rem;
   user-select: none;
+}
+
+.experiencia_name {
+  display: block;
+  color: rgba(0,0,0,.6);
+  margin-top: 1rem;
 }
