@@ -34,9 +34,9 @@ const Sobre = () => {
 
     <Col key={key} md={6} lg={4} sm={12} style={{ display: 'flex', justifyContent: 'center', marginTop: '1.2rem' }}>
       <Link href={janela.link}>
-        <Card style={{ width: '18rem', height: '70vh', border: '2px solid #cc4137' }}>
+        <Card style={{ width: '18rem', height: '400px', border: '2px solid #cc4137' }}>
           <div style={{ padding: '20px' }}>
-            <CardImg style={{ height: '30vh', objectFit: 'contain' }} variant="top" src={janela.img} alt={janela.alt}/>
+            <CardImg style={{ height: '200px', objectFit: 'contain' }} variant="top" src={janela.img} alt={janela.alt}/>
           </div>
           <CardBody style={{ padding: '20px' }}>
             <CardTitle style={{ textAlign: 'center', fontWeight: 700, fontSize: '21px' }}>{janela.title}</CardTitle>
