@@ -1,5 +1,6 @@
-import React from 'react';
-import { Container, Row, Col, Button } from "reactstrap";
+import React from 'react'
+import { Container, Row, Col, Button } from "reactstrap"
+import { convertDateToObject } from '../../helpers/convertDateToObject'
 
 const adjustForTimezone = (date, signal) => {
     var timeOffsetInMS = date.getTimezoneOffset() * 60000
@@ -29,21 +30,19 @@ const DatePicker = ({ datas, setData }) => (
               <Row className="dateRow">
               {
                 datas.map( (data, key) => {
-                    let date = parseIsoDatetime(data.date)
-                    let dia = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()
-                    let horario = date.toLocaleTimeString([], {timeStyle: 'short'})
+                    let date = convertDateToObject(data.date)
                     return (
                     <Col key={key} lg={3} sm={6} xs={12}>
                       <Button className="dateButton" onClick={() => {setData({"id": key+1, "date": data.date})}} 
                         title="Botao Escolha Uma Data"
-                        aria-label={`Dia: ${dia} e Horario: ${horario}`}>
+                        aria-label={`Dia: ${date.date} e Horario: ${date.time}`}>
                        <span>
                         <strong>
-                            {dia}
+                            {date.date}
                           </strong>
                        </span>
                         <span>
-                          {horario}
+                          {date.time}
                         </span>
                       </Button>
                     </Col>
@@ -56,6 +55,6 @@ const DatePicker = ({ datas, setData }) => (
           <h3>Nenhuma data disponível para agendamento.</h3>
         }
       </>
-  );
+  )
 
-export default DatePicker;
+export default DatePicker

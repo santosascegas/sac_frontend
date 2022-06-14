@@ -15,21 +15,54 @@ import TimePicker from 'react-time-picker/dist/entry.nostyle'
 
 import "react-datepicker/dist/react-datepicker.css"
 import ptbr from 'date-fns/locale/pt-BR'
+
+import "react-calendar/dist/Calendar.css"
+import DateTimePicker from 'react-datepicker'
+
 registerLocale('pt-BR', ptbr)
 
 const DatasCadastro = ({ datas, setDatas }) => {
   const cookies = new Cookies()
   const [modal, setModal] = useState(false)
   const [dataCalendario, setDataCalendario] = useState('')
-  const [dataHorario, setDataHorario] = useState('')
 
   const toggleModal = () => {
     if (modal) setDeleteDataInfo({})  
     setModal(!modal)
   }
 
-  const handleSubmit = () => {
+  const CustomTimeInput = ({ date, value, onChange }) => (
+    <input
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      style={{ border: "solid 1px pink" }}
+    />
+  )
+
+  const requestNewDates = async () => {
+    const rt = await cookies.get('refresh_token')
+    const config = await RefreshToken(rt)
     
+    await axios.get("http://localhost:8080/agenda/", config).then( (response) => {
+      setDatas(response.data)
+    }).catch( (error) => {
+      console.log(error)
+    } )
+  }
+
+  const handleSubmit = async (date) => {
+    const time_in_ISO_format = date.toISOString()
+    const obj = { "date": time_in_ISO_format }
+    const rt = await cookies.get('refresh_token')
+    const config = await RefreshToken(rt)
+
+    try {
+      await axios.post("http://localhost:8080/agenda", obj, config).then( async (response) => {
+        requestNewDates()
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const handleDelete = async (agenda_id, key) => {
@@ -37,6 +70,7 @@ const DatasCadastro = ({ datas, setDatas }) => {
     const config = await RefreshToken(rt)
     
     try {
+      console.log("hi")
       await axios.delete(`http://localhost:8080/agenda/${agenda_id}`, config)
     } catch (error) {
       console.log(error)
@@ -68,24 +102,22 @@ const DatasCadastro = ({ datas, setDatas }) => {
           <span>Não há datas cadastradas!</span>
         }
       </Col>
-
       <Col lg={8}>
         <Row>
           <Col lg={7}>
             <FormGroup>
-            <DatePicker selected={dataCalendario} onChange={(date) => setDataCalendario(date)} locale="pt-BR" />
+              <DatePicker
+                selected={dataCalendario}
+                onChange={(date) => setDataCalendario(date)}
+                locale="pt-BR"
+                dateFormat={"dd/MM/yyyy"}
+                customTimeInput={<CustomTimeInput />}
+                showTimeInput />
+              <Button style={{ marginTop: '1rem' }} onClick={() => handleSubmit(dataCalendario)}>
+                Adicionar nova data
+              </Button>
             </FormGroup>
           </Col>
-          <Col lg={5}>
-            <TimePicker 
-              value={dataHorario}
-              onChange={setDataHorario}
-            />
-          </Col>
-
-          <Button style={{ width: '30%', marginLeft: '0.8rem', marginTop: '1rem' }} onClick={handleSubmit}>
-            Adicionar nova data
-          </Button>
         </Row>
       </Col>
     </Row>
