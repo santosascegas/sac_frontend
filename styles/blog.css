@@ -2,6 +2,10 @@
     border: none;
 }
 
+.sac_blog_title {
+    margin-bottom: 3rem;
+}
+
 .hidden {
     display: none !important;
 }
@@ -34,6 +38,7 @@
     padding: 1rem;
     border: 3px solid #E30614;
     margin-bottom: 1rem;
+    margin-bottom: 4rem;
 }
 
 .sac_cardtitle {
