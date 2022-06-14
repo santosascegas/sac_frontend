@@ -124,7 +124,7 @@ const Post = ({posts, setPosts}) => {
                     /><span>Não</span>
                   </FormGroup>
                   <FormGroup className="required" style={ {marginBottom: "10px"} }>
-                    <Label for="question_2" style={ {marginRight: "10px"} }>Pergunta 2</Label>
+                    <Label for="question_2" style={ {marginRight: "10px"} }>Você desejaria realizar o passeio novamente?</Label>
                     <Input type="radio" name="question_2" id="question_2" checked={(bsparams.question_2 == 1) ? 1 : 0} value={1} 
                       onChange={(e) => {
                         setBsparams({...bsparams, question_2: e.target.value})
