@@ -170,7 +170,7 @@ const Index = () => {
                     /><span>Não</span>
                   </FormGroup>
                   <FormGroup className="required" style={ {marginBottom: "10px"} }>
-                    <Label for="question_2" style={ {marginRight: "10px"} }>Pergunta 2</Label>
+                    <Label for="question_2" style={ {marginRight: "10px"} }>Você desejaria realizar o passeio novamente?</Label>
                     <Input type="radio" name="question_2" id="question_2" value={1} 
                       onChange={(e) => {
                         setParams({...params, question_2: e.target.value})
@@ -191,7 +191,7 @@ const Index = () => {
                     />
                   </FormGroup>
                   <FormGroup style={ {marginBottom: "10px"} }>
-                    <Label style={{display: "block"}} for="image">Foto</Label>
+                    <Label style={{display: "block"}} for="image">Você pode enviar fotos do passeio</Label>
                     <Input type="file" name="image" id="image"
                       onChange={(e) => {
                         setParams({...params, image: e.target.files[0]})
@@ -200,7 +200,7 @@ const Index = () => {
                     />
                   </FormGroup>
                   <FormGroup style={ {marginBottom: "10px"} }>
-                    <Label style={{display: "block"}} for="audio">Audio</Label>
+                    <Label style={{display: "block"}} for="audio"></Label>
                     <span>Se quiser pode também gravar um audio!</span>
                     <RecordMic audio={audioData} setAudio={setAudioData} />
                   </FormGroup>
