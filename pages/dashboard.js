@@ -11,15 +11,12 @@ import Cookies from 'universal-cookie'
 
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 
-import { RefreshToken } from '../helpers/refreshToken'
-
 import { 
   Container, 
   Button,
   Collapse
 } from "reactstrap"
 
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 
@@ -29,7 +26,6 @@ const Dashboard = ({ datas, agendamentos, posts, error }) => {
 
   const [datasD, setDatasD] = useState(datas || [])
   const [agendamentosD, setAgendamentosD] = useState(agendamentos || [])
-  const [validToken, setValidToken] = useState([])
   const [postsD, setPostsD] = useState(posts || [])
 
   const [openAgendamento, setOpenAgendamento] = useState(false)
@@ -130,7 +126,7 @@ export const getServerSideProps = async ctx => {
   const cook = ctx?.req?.headers?.cookie
   const cookies = new Cookies(ctx.req.headers.cookie)
 
-  if (cook?.includes('access_token') === false) {
+  if (cook?.includes('access_token') === undefined) {
     return {
       redirect: {
         permanent: false,
@@ -152,6 +148,17 @@ export const getServerSideProps = async ctx => {
   } ).catch( (error) => {
     return { props: { error } }
   } )
+
+  if (tokens.access_token === undefined || tokens.refresh_token === undefined) {
+    cookies.remove("access_token")
+    cookies.remove("refresh_token")
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/admin"
+      }
+    }
+  }
 
   cookies.set('access_token', tokens.access_token)
 
