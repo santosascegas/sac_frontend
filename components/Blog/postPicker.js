@@ -51,7 +51,7 @@ const PostPicker = ({ posts, setPost}) => (
                             <span className="sac_questao_resposta" aria-label='Resposta: '>{(post.question_1) ? "Sim" : "Não"}</span>
                           </li>
                           <li>
-                            <span className="sac_questao" aria-label='Questão 2?'>Questão 2?</span>
+                            <span className="sac_questao" aria-label='Você desejaria realizar o passeio novamente?'>Você desejaria realizar o passeio novamente?</span>
                             <span className="sac_questao_resposta" aria-label='Resposta: '>{(post.question_2) ? "Sim" : "Não"}</span>
                           </li>
                         </ul>
