@@ -24,7 +24,7 @@ const PostPicker = ({ posts, setPost}) => (
           let image_url = `http://localhost:8080/files/get/${post.image.id}`
           let audio_url = `http://localhost:8080/files/get/${post.audio.id}`
           return (
-              <Row key={key}>
+              <Row key={key} id={post.id}>
                 <CardGroup className='sac_cardgroup'>
                   <div className="quotes"><GoQuote size={24}/></div>
                   <Card className='post_card'>

@@ -57,22 +57,24 @@ const Experiencias = ( { posts } ) => {
       <div className="experiencias_container">
         {
           posts.map((post, key) => {
-              let imagem = `http://localhost:8080/files/get/${post.image.id}`
+              let post_url = `http://localhost:3005/blog#${post.id}`
               return (
-                <div className="experiencia_card">
-                  <div className="red_border">
-                    <div className="quotes_mark">
-                      <GoQuote size={24} />
-                    </div>
-                    <div className="logo">
-                      <img src="./images/logo-principal.png" alt="Logo do Santos às Cegas"/>
-                    </div>
-                    <div className="content">
-                      <span>{reduceText(post.message)}</span>
-                      <span className="experiencia_name">— {reduceName(post.name)}</span>
+                <a className='experiencias_link' href={post_url}>
+                  <div className="experiencia_card">
+                    <div className="red_border">
+                      <div className="quotes_mark">
+                        <GoQuote size={24} />
+                      </div>
+                      <div className="logo">
+                        <img src="./images/logo-principal.png" alt="Logo do Santos às Cegas"/>
+                      </div>
+                      <div className="content">
+                        <span>{reduceText(post.message)}</span>
+                        <span className="experiencia_name">— {reduceName(post.name)}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
               )
             }
           )

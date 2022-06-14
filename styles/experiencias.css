@@ -19,6 +19,10 @@
   }
 }
 
+.experiencias_link:hover {
+  color: black;
+}
+
 .experiencia_card {
   display: flex;
   width: 430px;
