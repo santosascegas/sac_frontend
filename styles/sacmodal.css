@@ -19,6 +19,7 @@
     border-radius: 4px;
     max-height: calc(100vh - 60px);
     margin: 0 1rem 0 1rem;
+    overflow: scroll;
 }
 
 .container-modal .sacmodal .content .sacmodal-text {

@@ -2,6 +2,8 @@ import React from 'react'
 
 import Layout from "../components/Common/Layout"
 
+
+
 import { 
   Container, 
   Row, 
@@ -35,7 +37,8 @@ const Index = () => {
   const [loading, setLoading] = React.useState(false)
   const [audioData, setAudioData] = useState(null)
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     setLoading(true)
 
     const regexTelefone = new RegExp('^\\([0-9]{2}\\)((3[0-9]{3}-[0-9]{4})|(9[0-9]{3}-[0-9]{5}))$')
@@ -82,7 +85,7 @@ const Index = () => {
     formData.append('message', params.message)
     formData.append('question_1', params.question_1)
     formData.append('question_2', params.question_2)
-    
+
     await axios.post('http://localhost:8080/post/', formData, config)
     setSuccess('Avaliação enviada com sucesso!')
     limpar()
@@ -167,7 +170,7 @@ const Index = () => {
                     /><span>Não</span>
                   </FormGroup>
                   <FormGroup className="required" style={ {marginBottom: "10px"} }>
-                    <Label for="question_2" style={ {marginRight: "10px"} }>Pergunta 2</Label>
+                    <Label for="question_2" style={ {marginRight: "10px"} }>Você desejaria realizar o passeio novamente?</Label>
                     <Input type="radio" name="question_2" id="question_2" value={1} 
                       onChange={(e) => {
                         setParams({...params, question_2: e.target.value})
@@ -188,7 +191,7 @@ const Index = () => {
                     />
                   </FormGroup>
                   <FormGroup style={ {marginBottom: "10px"} }>
-                    <Label for="image">Imagem</Label>
+                    <Label style={{display: "block"}} for="image">Você pode enviar fotos do passeio</Label>
                     <Input type="file" name="image" id="image"
                       onChange={(e) => {
                         setParams({...params, image: e.target.files[0]})
@@ -197,14 +200,16 @@ const Index = () => {
                     />
                   </FormGroup>
                   <FormGroup style={ {marginBottom: "10px"} }>
+                    <Label style={{display: "block"}} for="audio"></Label>
+                    <span>Se quiser pode também gravar um audio!</span>
                     <RecordMic audio={audioData} setAudio={setAudioData} />
                   </FormGroup>
                 </Form>
 
-                <Button className="actionButton" onClick={handleSubmit} aria-label="Botao enviar formulario avaliação">
+                <Button className="actionButton sacbtn" onClick={(e) => handleSubmit(e)} aria-label="Enviar formulário de avaliação">
                   Enviar
                 </Button>
-                <Button className="actionButton" onClick={limpar} aria-label="Botao limpar formulario avaliação">
+                <Button className="actionButton sacbtn" onClick={limpar} aria-label="Botao limpar formulario avaliação">
                   Limpar
                 </Button>
               </>

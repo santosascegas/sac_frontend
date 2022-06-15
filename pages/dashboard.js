@@ -1,18 +1,16 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useRouter } from 'next/router'
 
 import Layout from "../components/Common/Layout"
 import UserTable from "../components/Dashboard/UserTable"
 import DatasCadastro from "../components/Dashboard/DatasCadastro"
 import Posts from "../components/Dashboard/Posts"
+import { RefreshToken } from '../helpers/refreshToken'
 
 import Cookies from 'universal-cookie'
 
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
-
-import { RefreshToken } from '../helpers/refreshToken'
 
 import { 
   Container, 
@@ -20,23 +18,58 @@ import {
   Collapse
 } from "reactstrap"
 
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-
-const Dashboard = ({ datas, agendamentos, posts, error }) => {
-
+const Dashboard = () => {
   const router = useRouter()
-
   const cookies = new Cookies()
 
-  const [datasD, setDatasD] = useState(datas || [])
-  const [agendamentosD, setAgendamentosD] = useState(agendamentos || [])
-  const [validToken, setValidToken] = useState([])
-  const [postsD, setPostsD] = useState(posts || [])
+  const [datasD, setDatasD] = useState([])
+  const [agendamentosD, setAgendamentosD] = useState([])
+  const [postsD, setPostsD] = useState([])
+  const [count, setCount] = useState(0)
 
   const [openAgendamento, setOpenAgendamento] = useState(false)
   const [openDatas, setOpenDatas] = useState(false)
   const [openPosts, setOpenPosts] = useState(false)
+
+  let token
+
+  if (typeof window !== 'undefined') {
+    token = localStorage.getItem('refresh_token')
+  }
+
+  const auth = async () => {
+    await RefreshToken(token).then( async (response) => {
+      if (response.headers.Authorization == "Bearer undefined") {
+        cookies.remove('refresh_token')
+        cookies.remove('access_token')
+        router.push("/admin")
+      }
+      await requestData()
+    } )
+  }
+
+  auth()
+
+  const requestData = async () => {
+    if(count == 0) {
+      await RefreshToken(token).then( async (config) => {
+        await axios.get('http://localhost:8080/post/todos', config).then( (response) => {
+          setPostsD(response.data)
+        })
+  
+        await axios.get('http://localhost:8080/agendamento/', config).then( (response) => {
+          setAgendamentosD(response.data)
+        })
+  
+        await axios.get('http://localhost:8080/agenda/', config).then( (response) => {
+          setDatasD(response.data)
+        })
+      })
+      setCount(1)
+    }
+  }
 
   const handleLogout = async (e) => {
     e.preventDefault()
@@ -86,9 +119,9 @@ const Dashboard = ({ datas, agendamentos, posts, error }) => {
             </div>
           </Button>
           <Collapse isOpen={openAgendamento}>
-            { error ? 
+            { (agendamentosD === []) ? 
             (
-              <div>Ocorreu um erro ao requisitar os agendamentos: {error.message}</div>
+              <div>Ocorreu um erro ao requisitar os agendamentos!</div>
             ) :
               (
                 <UserTable 
@@ -99,7 +132,6 @@ const Dashboard = ({ datas, agendamentos, posts, error }) => {
             
           </Collapse>
 
-          {/** Posts */}
           <Button className="collapseHeader" onClick={() => {setOpenPosts(!openPosts)}}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span>Postagens </span>
@@ -112,9 +144,9 @@ const Dashboard = ({ datas, agendamentos, posts, error }) => {
             </div>
           </Button>
           <Collapse isOpen={openPosts}>
-            { error ? 
+            { (postsD === []) ? 
             (
-              <div>Ocorreu um erro ao requisitar as postagens: {error.message}</div>
+              <div>Ocorreu um erro ao requisitar as postagens!</div>
             ) :
               (
                 <Posts posts={postsD} setPosts={setPostsD}/>
@@ -126,69 +158,6 @@ const Dashboard = ({ datas, agendamentos, posts, error }) => {
       </section>
     </Layout>
   )
-}
-
-export const getServerSideProps = async ctx => {
-  const cookies = new Cookies(ctx.req.headers.cookie)
-  let tokens
-
-  await fetch('http://localhost:8080/api/token/refresh', {
-    headers: new Headers({
-        Authorization: `Bearer ${cookies.get('refresh_token')}`
-    })
-  }).then( async (response) => {
-    await response.json().then( (data) => {
-      tokens = { access_token: data.access_token, refresh_token: data.refresh_token }
-    })
-  } ).catch( (error) => {
-    return { props: { error } }
-  } )
-
-  cookies.set('access_token', tokens.access_token)
-
-  let agenda
-
-  await fetch('http://localhost:8080/agenda/', {
-    headers: new Headers({
-        Authorization: `Bearer ${cookies.get('access_token')}`
-    })
-  }).then( async (response) => {
-    await response.json().then( (data) => {
-      agenda = data
-    })
-  } ).catch( (error) => {
-    return { props: { error } }
-  } )
-
-  let agendamentos
-
-  await fetch('http://localhost:8080/agendamento/', {
-    headers: new Headers({
-        Authorization: `Bearer ${cookies.get('access_token')}`
-    })
-  }).then( async (response) => {
-    await response.json().then( (data) => {
-      agendamentos = data
-    })
-  } ).catch( (error) => {
-    return { props: { error } }
-  } )
-
-  let posts
-
-  await fetch('http://localhost:8080/post/todos', {
-    headers: new Headers({
-        Authorization: `Bearer ${cookies.get('access_token')}`
-    })
-  }).then( async (response) => {
-    await response.json().then( (data) => {
-      posts = data
-    })
-  } ).catch( (error) => {
-    return { props: { error } }
-  } )
-
-  return { props: { datas: agenda, agendamentos: agendamentos, posts: posts } }
 }
 
 export default Dashboard

@@ -1,8 +1,8 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useRef, useEffect } from 'react'
+import axios from 'axios'
 import { useRouter } from 'next/router'
 
-import Layout from "../components/Common/Layout";
+import Layout from "../components/Common/Layout"
 
 import { 
   Container, 
@@ -12,41 +12,52 @@ import {
   Input,
   Button,
   Spinner
-} from "reactstrap";
-import Cookies from 'universal-cookie';
+} from "reactstrap"
+import Cookies from 'universal-cookie'
 
 const Admin = ({ isLogged }) => {
   const cookies = new Cookies()
-  const router = useRouter();
+  const router = useRouter()
 
-  const [login, setLogin] = React.useState(null);
-  const [senha, setSenha] = React.useState(null);
+  const usernameRef = useRef(null)
+  const passwordRef = useRef(null)
 
-  const [error, setError] = React.useState(null);
-  const [loading, setLoading] = React.useState(false);
+  const [login, setLogin] = React.useState(null)
+  const [senha, setSenha] = React.useState(null)
+
+  const [error, setError] = React.useState(null)
+  const [loading, setLoading] = React.useState(false)
 
   React.useEffect(() => {
-    if (isLogged) router.push('/dashboard');
-  }, []);
+    if (isLogged) router.push('/dashboard')
+  }, [])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+    e.preventDefault()
+    setLoading(true)
+
+    setInterval( () => {}, 500)
 
     try {
-      const params = new URLSearchParams();
+      const params = new URLSearchParams()
       params.append('username', login)
       params.append('password', senha)
       const res = await axios.post('http://localhost:8080/api/login', params)
 
-      cookies.set("access_token", res.data["access_token"], {sameSite: 'None'})
-      cookies.set("refresh_token", res.data["refresh_token"], {sameSite: 'None'})
+      // Para o Chrome
+      localStorage.setItem("access_token", res.data["access_token"])
+      localStorage.setItem("refresh_token", res.data["refresh_token"])
 
-      router.push('/dashboard')
-      setLoading(false);
+      // Para o Firefox
+      cookies.set("access_token", res.data["access_token"], {path: '/', sameSite: 'None', Secure: true})
+      cookies.set("refresh_token", res.data["refresh_token"], {path: '/', sameSite: 'None'})
+
+      
+      router.push("/dashboard")
+      setLoading(false)
       } catch (error) {
-      console.log(error);
-      setLoading(false);
+      console.log(error)
+      setLoading(false)
     }
   }
 
@@ -79,11 +90,11 @@ const Admin = ({ isLogged }) => {
                 <Form className="userForm">
                   <FormGroup>
                     <Label for="login">Login</Label>
-                    <Input type="text" name="login" id="login" onChange={(e) => {setLogin(e.target.value)}}/>
+                    <Input type="text" name="login" id="login" ref={usernameRef} onChange={(e) => {setLogin(e.target.value)}}/>
                   </FormGroup>
                   <FormGroup>
                     <Label for="senha">Senha</Label>
-                    <Input type="password" name="senha" id="senha" onChange={(e) => {setSenha(e.target.value)}}/>
+                    <Input type="password" name="senha" id="senha" ref={passwordRef} onChange={(e) => {setSenha(e.target.value)}}/>
                   </FormGroup>
                 </Form>
 
@@ -101,15 +112,15 @@ const Admin = ({ isLogged }) => {
 }
 
 export async function getServerSideProps(ctx) {
-  const cookies = ctx?.req?.headers?.cookie;
+  const cookies = new Cookies(ctx.req.headers.cookie)
   let isLogged
-  if (cookies?.includes('refresh_token') || cookies?.includes('access_token')) {
+  if (cookies.get('refresh_token') || cookies.get('access_token')) {
     isLogged = true
   } else {
     isLogged = false
   }
 
-  return { props: { isLogged } };
-};
+  return { props: { isLogged } }
+}
 
-export default Admin;
+export default Admin

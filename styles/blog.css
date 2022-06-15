@@ -1,7 +1,100 @@
 .post_card {
-    margin-bottom: 1rem !important;
+    border: none;
+}
+
+.sac_blog_title {
+    margin-bottom: 3rem;
 }
 
 .hidden {
     display: none !important;
+}
+
+.recmic-button {
+    border: none;
+    padding: calc(1rem * 0.7);
+    margin-right: 1rem;
+}
+
+.minhaExperiencia {
+    margin-bottom: 1rem;
+}
+
+.recmic-button.rec {
+    background-color: rgba(0,255,0,.2);
+}
+
+.sacbtn {
+    margin-right: 1rem;
+}
+
+.recmic-button.stop {
+    background-color: rgba(255,0,0,.2);
+}
+
+.sac_cardgroup {
+    padding: 0 !important;
+    position: relative;
+    padding: 1rem;
+    border: 3px solid #E30614;
+    margin-bottom: 1rem;
+    margin-bottom: 4rem;
+}
+
+.sac_cardtitle {
+    margin-left: 40px;
+    margin-top: calc(1rem / 2) ;
+}
+
+.sac_cardsubtitle {
+    margin-left: 40px;
+}
+
+.sac_cardbody {
+    padding: 0 1rem 0 1rem;
+}
+
+.sac_cardtext {
+    font-size: 1.125em;
+    letter-spacing: .00625rem;
+    line-height: 1.875em;
+}
+
+.sac_cardgroup .quotes{
+    position: absolute;
+    z-index: 10;
+    left: -1rem;
+    top: -1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background-color: white;
+}
+
+ul.sac_questoes {
+    margin-top: 1rem;
+    background-color: rgba(0,0,0,.05);
+    padding: 1rem;
+    border-radius: 3px;
+    list-style: none;
+}
+
+ul.sac_questoes li {
+    margin-left: 1rem;
+}
+
+ul.sac_questoes li:before {
+    content: ">"
+}
+
+.sac_questao {
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+.sac_questao_resposta {
+    display: block;
+    margin-left: 2.6rem;
 }

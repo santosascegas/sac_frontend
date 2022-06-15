@@ -1,3 +1,9 @@
+@media (max-width: 1400px) {
+  .nav-item {
+    font-size: 1.255rem !important;
+  }
+}
+
 .header {
     padding: 0px 15px;
   }

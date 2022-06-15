@@ -24,7 +24,7 @@ const Blog = ({ posts }) => {
     <Layout pageTitle="Santos as Cegas | Blog" inicio="blog" neverStick={true}>
       <section className="blog" id="blog" role="form">
         <Container>
-          <h2>Blog</h2>
+          <h2 className='sac_blog_title'>Blog</h2>
           
           { error && (
             <p style={{ color: 'red' }}>{error}</p>
