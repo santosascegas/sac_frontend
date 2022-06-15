@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from 'react';
-import axios from 'axios';
+import React, { useRef, useEffect } from 'react'
+import axios from 'axios'
 import { useRouter } from 'next/router'
 
-import Layout from "../components/Common/Layout";
+import Layout from "../components/Common/Layout"
 
 import { 
   Container, 
@@ -12,48 +12,52 @@ import {
   Input,
   Button,
   Spinner
-} from "reactstrap";
-import Cookies from 'universal-cookie';
+} from "reactstrap"
+import Cookies from 'universal-cookie'
 
 const Admin = ({ isLogged }) => {
   const cookies = new Cookies()
-  const router = useRouter();
+  const router = useRouter()
 
   const usernameRef = useRef(null)
   const passwordRef = useRef(null)
 
-  const [login, setLogin] = React.useState(null);
-  const [senha, setSenha] = React.useState(null);
+  const [login, setLogin] = React.useState(null)
+  const [senha, setSenha] = React.useState(null)
 
-  const [error, setError] = React.useState(null);
-  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null)
+  const [loading, setLoading] = React.useState(false)
 
   React.useEffect(() => {
-    if (isLogged) router.push('/dashboard');
-  }, []);
+    if (isLogged) router.push('/dashboard')
+  }, [])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+    e.preventDefault()
+    setLoading(true)
 
     setInterval( () => {}, 500)
 
-    console.log(login, senha)
-
     try {
-      const params = new URLSearchParams();
+      const params = new URLSearchParams()
       params.append('username', login)
       params.append('password', senha)
       const res = await axios.post('http://localhost:8080/api/login', params)
 
-      cookies.set("access_token", res.data["access_token"], {sameSite: 'None'})
-      cookies.set("refresh_token", res.data["refresh_token"], {sameSite: 'None'})
+      // Para o Chrome
+      localStorage.setItem("access_token", res.data["access_token"])
+      localStorage.setItem("refresh_token", res.data["refresh_token"])
 
-      router.push('/dashboard')
-      setLoading(false);
+      // Para o Firefox
+      cookies.set("access_token", res.data["access_token"], {path: '/', sameSite: 'None', Secure: true})
+      cookies.set("refresh_token", res.data["refresh_token"], {path: '/', sameSite: 'None'})
+
+      
+      router.push("/dashboard")
+      setLoading(false)
       } catch (error) {
-      console.log(error);
-      setLoading(false);
+      console.log(error)
+      setLoading(false)
     }
   }
 
@@ -116,7 +120,7 @@ export async function getServerSideProps(ctx) {
     isLogged = false
   }
 
-  return { props: { isLogged } };
-};
+  return { props: { isLogged } }
+}
 
-export default Admin;
+export default Admin

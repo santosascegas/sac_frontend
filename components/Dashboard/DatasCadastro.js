@@ -5,24 +5,23 @@ import { FaTrash } from 'react-icons/fa'
 
 import { convertDateToObject } from '../../helpers/convertDateToObject'
 
-import Cookies from 'universal-cookie'
 import axios from 'axios'
 import { RefreshToken } from '../../helpers/refreshToken'
 
 import DatePicker, { registerLocale } from 'react-datepicker'
-import TimePicker from 'react-time-picker/dist/entry.nostyle'
-//import "react-clock/dist/Clock.css"
 
 import "react-datepicker/dist/react-datepicker.css"
 import ptbr from 'date-fns/locale/pt-BR'
 
 import "react-calendar/dist/Calendar.css"
-import DateTimePicker from 'react-datepicker'
 
 registerLocale('pt-BR', ptbr)
 
 const DatasCadastro = ({ datas, setDatas }) => {
-  const cookies = new Cookies()
+  let token
+  if (typeof window !== 'undefined') {
+    token = localStorage.getItem('refresh_token')
+  }
   const [modal, setModal] = useState(false)
   const [dataCalendario, setDataCalendario] = useState('')
 
@@ -40,9 +39,8 @@ const DatasCadastro = ({ datas, setDatas }) => {
   )
 
   const requestNewDates = async () => {
-    const rt = await cookies.get('refresh_token')
-    const config = await RefreshToken(rt)
-    
+    const config = await RefreshToken(token)
+
     await axios.get("http://localhost:8080/agenda/", config).then( (response) => {
       setDatas(response.data)
     }).catch( (error) => {
@@ -51,26 +49,26 @@ const DatasCadastro = ({ datas, setDatas }) => {
   }
 
   const handleSubmit = async (date) => {
-    const time_in_ISO_format = date.toISOString()
-    const obj = { "date": time_in_ISO_format }
-    const rt = await cookies.get('refresh_token')
-    const config = await RefreshToken(rt)
-
-    try {
-      await axios.post("http://localhost:8080/agenda", obj, config).then( async (response) => {
-        requestNewDates()
-      })
-    } catch (error) {
-      console.log(error)
+    if (date !== "") {
+      const time_in_ISO_format = date.toISOString()
+      const obj = { "date": time_in_ISO_format }
+      const config = await RefreshToken(token)
+  
+      try {
+        await axios.post("http://localhost:8080/agenda", obj, config).then( async (response) => {
+          requestNewDates()
+        })
+      } catch (error) {
+        console.log(error)
+      }
     }
+    
   }
 
   const handleDelete = async (agenda_id, key) => {
-    const rt = await cookies.get('refresh_token')
-    const config = await RefreshToken(rt)
+    const config = await RefreshToken(token)
     
     try {
-      console.log("hi")
       await axios.delete(`http://localhost:8080/agenda/${agenda_id}`, config)
     } catch (error) {
       console.log(error)

@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-import { Table, Row, Col, Button, FormGroup, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
+import { Table, Button, FormGroup } from "reactstrap"
 import { GrFormClose } from 'react-icons/gr'
 
-import { 
-    Container, 
+import {
     Form,
     Label,
-    Input,
-    Spinner
+    Input
   } from "reactstrap"
 import InputMask from 'react-input-mask'
 import Cookies from 'universal-cookie'
@@ -17,7 +15,10 @@ import axios from 'axios'
 import { convertDateToObject } from '../../helpers/convertDateToObject'
 
 const Post = ({posts, setPosts}) => {
-
+    let token
+    if (typeof window !== 'undefined') {
+      token = localStorage.getItem('refresh_token')
+    }
     const [params, setParams] = React.useState({})
 
     const [showModal, setShowModal] = useState(false)
@@ -40,8 +41,7 @@ const Post = ({posts, setPosts}) => {
         const handleSubmit = async (request_data, e) => {
             e.preventDefault()
 
-            const rt = await cookies.get('refresh_token')
-            const config = await RefreshToken(rt)
+            const config = await RefreshToken(token)
 
             const obj = request_data
 
