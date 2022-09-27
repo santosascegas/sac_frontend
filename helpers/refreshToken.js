@@ -1,6 +1,6 @@
 export const RefreshToken = async (refresh_token) => {
 
-    const res = await fetch('http://localhost:8080/api/token/refresh', {
+    const res = await fetch(`${process.env.URL_BACKEND}/api/token/refresh`, {
         headers: new Headers( { Authorization: `Bearer ${refresh_token}` } )
     }).then( async (response) => {
         const obj = await response.json().then( (data) => {

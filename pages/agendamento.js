@@ -74,7 +74,7 @@ const Agendamento = ({ datas }) => {
 
 Agendamento.getInitialProps = async ctx => {
   try {
-    const res = await axios.get('http://localhost:8080/agenda/status');
+    const res = await axios.get(`${process.env.URL_BACKEND}/agenda/status`);
     const datas = res.data;
     return { datas };
   } catch (error) {

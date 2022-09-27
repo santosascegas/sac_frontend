@@ -41,7 +41,7 @@ const DatasCadastro = ({ datas, setDatas }) => {
   const requestNewDates = async () => {
     const config = await RefreshToken(token)
 
-    await axios.get("http://localhost:8080/agenda/", config).then( (response) => {
+    await axios.get(`${process.env.URL_BACKEND}/agenda/`, config).then( (response) => {
       setDatas(response.data)
     }).catch( (error) => {
       console.log(error)
@@ -55,7 +55,7 @@ const DatasCadastro = ({ datas, setDatas }) => {
       const config = await RefreshToken(token)
   
       try {
-        await axios.post("http://localhost:8080/agenda", obj, config).then( async (response) => {
+        await axios.post(`${process.env.URL_BACKEND}/agenda`, obj, config).then( async (response) => {
           requestNewDates()
         })
       } catch (error) {
@@ -69,7 +69,7 @@ const DatasCadastro = ({ datas, setDatas }) => {
     const config = await RefreshToken(token)
     
     try {
-      await axios.delete(`http://localhost:8080/agenda/${agenda_id}`, config)
+      await axios.delete(`${process.env.URL_BACKEND}/agenda/${agenda_id}`, config)
     } catch (error) {
       console.log(error)
     }

@@ -16,13 +16,13 @@ import { convertDateToObject } from '../../helpers/convertDateToObject'
 const PostPicker = ({ posts, setPost}) => (
   <>
   {
-    posts.length > 0 ? (
+    !!posts ? (
       <>
       {
         posts.reverse().map( (post, key) => {
           let data = convertDateToObject(post.created_at)
-          let image_url = `http://localhost:8080/files/get/${post.image.id}`
-          let audio_url = `http://localhost:8080/files/get/${post.audio.id}`
+          let image_url = `${process.env.URL_BACKEND}/files/get/${post.image.id}`
+          let audio_url = `${process.env.URL_BACKEND}/files/get/${post.audio.id}`
           return (
               <Row key={key} id={post.id}>
                 <CardGroup className='sac_cardgroup'>

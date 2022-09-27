@@ -15,7 +15,7 @@ const Index = ( {posts} ) => {
 }
 
 export const getServerSideProps = async ctx => {
-  const posts = await axios.get('http://localhost:8080/post/')
+  const posts = await axios.get(`${process.env.URL_BACKEND}/post/`)
   return { props: { posts: posts.data } }
 }
 

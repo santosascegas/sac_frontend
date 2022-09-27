@@ -24,7 +24,7 @@ const parseIsoDatetime = (dtstr) => {
 const DatePicker = ({ datas, setData }) => (
       <>
         {
-          datas.length > 0 ? (
+          !!datas ? (
             <>
               <h4>Escolha uma Data Disponível</h4>
               <Row className="dateRow">
