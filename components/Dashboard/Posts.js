@@ -63,17 +63,17 @@ const Post = ({posts, setPosts}) => {
                 obj.isPublic = "false"
             }
 
-            await axios.put(`http://localhost:8080/post/${bsparams.id}`, bsparams, config)
+            await axios.put(`${process.env.URL_BACKEND}/post/${bsparams.id}`, bsparams, config)
 
-            await axios.get("http://localhost:8080/post/todos", config).then( (response) => {
+            await axios.get(`${process.env.URL_BACKEND}/post/todos`, config).then( (response) => {
                 setPosts(response.data)
             } )
 
             setShowModal(false)
         }
 
-        let image_url = `http://localhost:8080/files/get/${post.image.id}`
-        let audio_url = `http://localhost:8080/files/get/${post.audio.id}`
+        let image_url = `${process.env.URL_BACKEND}/files/get/${post.image.id}`
+        let audio_url = `${process.env.URL_BACKEND}/files/get/${post.audio.id}`
 
         return (
             <div className="container-modal">

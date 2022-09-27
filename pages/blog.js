@@ -42,7 +42,7 @@ const Blog = ({ posts }) => {
 
 Blog.getInitialProps = async ctx => {
   try {
-    const res = await axios.get('http://localhost:8080/post/');
+    const res = await axios.get(`${process.env.URL_BACKEND}/post/`);
     const posts = res.data;
     return { posts };
   } catch (error) {

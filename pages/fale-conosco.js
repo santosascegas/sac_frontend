@@ -51,7 +51,7 @@ const Index = () => {
 
     setError(null);
     
-    await axios.post('http://localhost:8080/fale-conosco/', params);
+    await axios.post(`${process.env.URL_BACKEND}/fale-conosco/`, params);
     setSuccess('Mensagem enviada com sucesso!');
     limpar();
     setLoading(false);

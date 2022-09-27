@@ -42,7 +42,9 @@ const Admin = ({ isLogged }) => {
       const params = new URLSearchParams()
       params.append('username', login)
       params.append('password', senha)
-      const res = await axios.post('http://localhost:8080/api/login', params)
+      console.log(process.env.URL_BACKEND)
+      console.log("teste")
+      const res = await axios.post(`${process.env.URL_BACKEND}/api/login`, params)
 
       // Para o Chrome
       localStorage.setItem("access_token", res.data["access_token"])

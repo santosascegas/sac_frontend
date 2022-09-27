@@ -55,15 +55,15 @@ const Dashboard = () => {
   const requestData = async () => {
     if(count == 0) {
       await RefreshToken(token).then( async (config) => {
-        await axios.get('http://localhost:8080/post/todos', config).then( (response) => {
+        await axios.get(`${process.env.URL_BACKEND}/post/todos`, config).then( (response) => {
           setPostsD(response.data)
         })
   
-        await axios.get('http://localhost:8080/agendamento/', config).then( (response) => {
+        await axios.get(`${process.env.URL_BACKEND}/agendamento/`, config).then( (response) => {
           setAgendamentosD(response.data)
         })
   
-        await axios.get('http://localhost:8080/agenda/', config).then( (response) => {
+        await axios.get(`${process.env.URL_BACKEND}/agenda/`, config).then( (response) => {
           setDatasD(response.data)
         })
       })

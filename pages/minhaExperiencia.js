@@ -86,7 +86,7 @@ const Index = () => {
     formData.append('question_1', params.question_1)
     formData.append('question_2', params.question_2)
 
-    await axios.post('http://localhost:8080/post/', formData, config)
+    await axios.post(`${process.env.URL_BACKEND}/post/`, formData, config)
     setSuccess('Avaliação enviada com sucesso!')
     limpar()
     setLoading(false)
