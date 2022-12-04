@@ -47,9 +47,10 @@ const Index = () => {
       setError('Número de telefone inválido. Por favor, preencha com dados válidos')
       return
     }
-
-    if (!params.message) {
-      setError('Uma mensagem de avaliação é necessária!')
+    
+    if (!params.name || !params.phone || !params.question_1 || !params.question_2 || !params.message) {
+      setError("Os campos obrigatórios precisam ser preenchidos!");
+      setLoading(false)
       return
     }
 
